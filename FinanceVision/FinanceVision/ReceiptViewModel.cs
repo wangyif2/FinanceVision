@@ -64,7 +64,6 @@ namespace FinanceVision
             
 
         }
-
         
         #region INotifyPropertyChanged Members
 

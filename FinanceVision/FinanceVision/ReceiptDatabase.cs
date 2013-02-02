@@ -74,18 +74,25 @@ namespace FinanceVision
             }
         }
 
-        private void NotifyPropertyChanged(string entryprice)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void NotifyPropertyChanging(string entryprice)
-        {
-            throw new NotImplementedException();
-        }
-
         public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged(string propertyName)
+        {
+            if (PropertyChanging != null)
+            {
+                PropertyChanging(this, new PropertyChangingEventArgs(propertyName));
+            }
+        }
+
         public event PropertyChangingEventHandler PropertyChanging;
+
+        private void NotifyPropertyChanging(string propertyName)
+        {
+            if (PropertyChanging != null)
+            {
+                PropertyChanging(this, new PropertyChangingEventArgs(propertyName));
+            }
+        }
     }
 
 }
