@@ -70,11 +70,11 @@ namespace FinanceVision.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Menu Item.
+        ///   Looks up a localized string similar to DevSetup.
         /// </summary>
-        public static string AppBarMenuItemText {
+        public static string AppBarMenu_DevSetup {
             get {
-                return ResourceManager.GetString("AppBarMenuItemText", resourceCulture);
+                return ResourceManager.GetString("AppBarMenu_DevSetup", resourceCulture);
             }
         }
         
