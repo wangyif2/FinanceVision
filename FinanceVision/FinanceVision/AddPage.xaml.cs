@@ -102,10 +102,6 @@ namespace FinanceVision
                 photoChooser.Show();
                 //cam.Show();
             }
-            else if (e.NavigationMode == NavigationMode.Back)
-            {
-                NavigationService.GoBack();
-            }
         }
 
     }
