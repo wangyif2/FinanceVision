@@ -41,11 +41,7 @@
                 <!--Pivot item one-->
                 <phone:PivotItem Header="first">
                     <!--Double line list with text wrapping-->
-<<<<<<< HEAD
                     <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding AllReceiptEntries}">
-=======
-                    <!--<phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding Items}">
->>>>>>> 061563f98d74ecc61736a08f9ca242277db24b6e
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Margin="0,0,0,17">
@@ -55,7 +51,7 @@
                                 </StackPanel>
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>
-                    </phone:LongListSelector>-->
+                    </phone:LongListSelector>
                     <Image x:Name="myImage"/>
                 </phone:PivotItem>
                 <!--Pivot item twp-->

@@ -73,9 +73,9 @@ namespace FinanceVision
                     db.CreateDatabase();
 
                     // Prepopulate the categories.
-                    db.entries.InsertOnSubmit(new ReceiptEntry {EntryId = 1, EntryName = "Top Sushi", EntryPrice = 10.00});
-                    db.entries.InsertOnSubmit(new ReceiptEntry {EntryId = 2, EntryName = "Queen Slice", EntryPrice = 8.13} );
-                    db.entries.InsertOnSubmit(new ReceiptEntry {EntryId = 3, EntryName = "Burger King", EntryPrice = 7.23} );
+                    db.entries.InsertOnSubmit(new ReceiptEntry {EntryId = 1, EntryName = "Top Sushi", EntryPrice = (float) 10.00});
+                    db.entries.InsertOnSubmit(new ReceiptEntry {EntryId = 2, EntryName = "Queen Slice", EntryPrice = (float) 8.13} );
+                    db.entries.InsertOnSubmit(new ReceiptEntry {EntryId = 3, EntryName = "Burger King", EntryPrice = (float) 7.23} );
 
                     // Save categories to the database.
                     db.SubmitChanges();
