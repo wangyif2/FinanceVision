@@ -34,3 +34,5 @@ C:\Users\Glen\Documents\GitHub\FinanceVision\FinanceVision\FinanceVision\obj\Deb
 C:\Users\Glen\Documents\GitHub\FinanceVision\FinanceVision\FinanceVision\obj\Debug\FinanceVision.dll
 C:\Users\Glen\Documents\GitHub\FinanceVision\FinanceVision\FinanceVision\obj\Debug\FinanceVision.pdb
 C:\Users\Glen\Documents\GitHub\FinanceVision\FinanceVision\FinanceVision\obj\Debug\XapCacheFile.xml
+C:\Users\Glen\Documents\GitHub\FinanceVision\FinanceVision\FinanceVision\Bin\Debug\Microsoft.Phone.Controls.Toolkit.dll
+C:\Users\Glen\Documents\GitHub\FinanceVision\FinanceVision\FinanceVision\obj\Debug\FinanceVision.csprojResolveAssemblyReference.cache
