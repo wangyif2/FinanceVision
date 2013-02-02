@@ -22,7 +22,7 @@ namespace FinanceVision
             BuildLocalizedApplicationBar();
         }
 
-        // Sample code for building a localized ApplicationBar
+        // Code for building a localized ApplicationBar
         private void BuildLocalizedApplicationBar()
         {
             // Set the page's ApplicationBar to a new instance of ApplicationBar.
@@ -31,11 +31,17 @@ namespace FinanceVision
             // Create a new button and set the text value to the localized string from AppResources.
             ApplicationBarIconButton appBarButton_add = new ApplicationBarIconButton(new Uri("/Images/add.png", UriKind.Relative));
             appBarButton_add.Text = AppResources.AppBarButton_Add;
+            appBarButton_add.Click += AddButton_Click;
             ApplicationBar.Buttons.Add(appBarButton_add);
 
             // Create a new menu item with the localized string from AppResources.
             ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
             ApplicationBar.MenuItems.Add(appBarMenuItem);
+        }
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/AddPage.xaml", UriKind.Relative));
         }
     }
 }
