@@ -80,6 +80,16 @@ namespace FinanceVision
                     // Save categories to the database.
                     db.SubmitChanges();
                 }
+                else
+                {
+                    // Prepopulate the categories.
+                    db.entries.InsertOnSubmit(new ReceiptEntry { EntryId = 1, EntryName = "Top Sushi", EntryPrice = (float)10.00 });
+                    db.entries.InsertOnSubmit(new ReceiptEntry { EntryId = 2, EntryName = "Queen Slice", EntryPrice = (float)8.13 });
+                    db.entries.InsertOnSubmit(new ReceiptEntry { EntryId = 3, EntryName = "Burger King", EntryPrice = (float)7.23 });
+
+                    // Save categories to the database.
+                    db.SubmitChanges();
+                }
             }
 
         }
