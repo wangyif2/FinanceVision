@@ -131,7 +131,7 @@
   <data name="AppBarButton_Add" xml:space="preserve">
     <value>add</value>
   </data>
-  <data name="AppBarMenuItemText" xml:space="preserve">
-    <value>Menu Item</value>
+  <data name="AppBarMenu_DevSetup" xml:space="preserve">
+    <value>DevSetup</value>
   </data>
 </root>
