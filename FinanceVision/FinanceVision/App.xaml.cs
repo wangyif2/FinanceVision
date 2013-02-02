@@ -18,6 +18,12 @@ namespace FinanceVision
         /// <returns>The root frame of the Phone Application.</returns>
         public static PhoneApplicationFrame RootFrame { get; private set; }
 
+        private static ReceiptViewModel viewModel;
+        public static ReceiptViewModel ViewModel
+        {
+            get { return viewModel; }
+        }
+
         /// <summary>
         /// Constructor for the Application object.
         /// </summary>
@@ -54,6 +60,30 @@ namespace FinanceVision
                 // and consume battery power when the user is not using the phone.
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
+
+            // Specify the local database connection string.
+            string DBConnectionString = "Data Source=isostore:/ReceiptDatabase.sdf";
+
+            // Create the database if it does not exist.
+            using (ReceiptDatabase db = new ReceiptDatabase(DBConnectionString))
+            {
+                if (db.DatabaseExists() == false)
+                {
+                    // Create the local database.
+                    db.CreateDatabase();
+
+                    // Prepopulate the categories.
+                    db.entries.InsertOnSubmit(new ReceiptEntry {EntryId = 1, EntryName = "Top Sushi", EntryPrice = 10.00});
+                    db.entries.InsertOnSubmit(new ReceiptEntry {EntryId = 2, EntryName = "Queen Slice", EntryPrice = 8.13} );
+                    db.entries.InsertOnSubmit(new ReceiptEntry {EntryId = 3, EntryName = "Burger King", EntryPrice = 7.23} );
+
+                    // Save categories to the database.
+                    db.SubmitChanges();
+                }
+            }
+
+            viewModel = new ReceiptViewModel(DBConnectionString);
+            viewModel.LoadEntriesFromDatabase();
 
         }
 
