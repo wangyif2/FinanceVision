@@ -19,8 +19,9 @@ namespace FinanceVision
 
         public AddPage()
         {
-            InitializeComponent();
-            BuildLocalizedApplicationBar();
+            //See photochoosercompleted for reason why this is commented out
+            //InitializeComponent();
+            //BuildLocalizedApplicationBar();
 
             //cam = new CameraCaptureTask();
             //cam.Completed += cam_Completed;
@@ -62,10 +63,19 @@ namespace FinanceVision
         {
             if (e.TaskResult == TaskResult.OK)
             {
+                //This is here to create the illusion of navigating to camera first 
+                //then second page 
+                InitializeComponent();
+                BuildLocalizedApplicationBar();
+
                 //Code to display the photo on the page in an image control named myImage.
                 System.Windows.Media.Imaging.BitmapImage bmp = new System.Windows.Media.Imaging.BitmapImage();
                 bmp.SetSource(e.ChosenPhoto);
                 myImage.Source = bmp;
+            }
+            else if (e.TaskResult == TaskResult.Cancel)
+            {
+                NavigationService.GoBack();
             }
         }
 
@@ -88,6 +98,10 @@ namespace FinanceVision
             {
                 photoChooser.Show();
                 //cam.Show();
+            }
+            else if (e.NavigationMode == NavigationMode.Back)
+            {
+                NavigationService.GoBack();
             }
         }
 
