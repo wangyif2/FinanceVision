@@ -4,11 +4,8 @@
   <App xmlns="" ProductID="{a624cb7a-9e8d-401c-b4b5-260d1870cdc9}" Title="FinanceVision" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="FinanceVision author" Description="Sample description" Publisher="FinanceVision" PublisherID="{dc14e334-a0f2-4ca0-a4de-bc1c0a5eaf61}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
-      <Capability Name="ID_CAP_NETWORKING" />
-      <Capability Name="ID_CAP_MEDIALIB_AUDIO" />
-      <Capability Name="ID_CAP_MEDIALIB_PLAYBACK" />
-      <Capability Name="ID_CAP_SENSORS" />
-      <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
+      <Capability Name="ID_CAP_ISV_CAMERA" />
+      <Capability Name="ID_CAP_MEDIALIB_PHOTO" />
     </Capabilities>
     <Tasks>
       <DefaultTask Name="_default" NavigationPage="MainPage.xaml" />
@@ -33,6 +30,9 @@
       <ScreenResolution Name="ID_RESOLUTION_WXGA" />
       <ScreenResolution Name="ID_RESOLUTION_HD720P" />
     </ScreenResolutions>
+    <Requirements>
+      <Requirement Name="ID_REQ_REARCAMERA" />
+    </Requirements>
   </App>
 </Deployment>
 <!-- WPSDK Version 8.0.9900 -->
