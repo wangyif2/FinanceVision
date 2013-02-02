@@ -160,8 +160,8 @@
     <Content Include="Images\sample6.jpg" />
     <Content Include="Images\sample7.jpg" />
     <Content Include="Images\sample8.jpg" />
-    <Content Include="Microsoft.Hawaii.ClientBase.dll" />
-    <Content Include="Microsoft.Hawaii.Ocr.Client.dll" />
+    <Content Include="Libs\Microsoft.Hawaii.ClientBase.dll" />
+    <Content Include="Libs\Microsoft.Hawaii.Ocr.Client.dll" />
     <Content Include="README_FIRST.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
@@ -181,6 +181,7 @@
       <HintPath>..\packages\WPtoolkit.4.2012.10.30\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
