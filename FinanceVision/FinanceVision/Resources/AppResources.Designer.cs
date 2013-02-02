@@ -63,9 +63,9 @@ namespace FinanceVision.Resources {
         /// <summary>
         ///   Looks up a localized string similar to add.
         /// </summary>
-        public static string AppBarButtonText {
+        public static string AppBarButton_Add {
             get {
-                return ResourceManager.GetString("AppBarButtonText", resourceCulture);
+                return ResourceManager.GetString("AppBarButton_Add", resourceCulture);
             }
         }
         

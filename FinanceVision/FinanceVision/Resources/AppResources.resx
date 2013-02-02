@@ -128,7 +128,7 @@
   <data name="ApplicationTitle" xml:space="preserve">
     <value>Finance Vision</value>
   </data>
-  <data name="AppBarButtonText" xml:space="preserve">
+  <data name="AppBarButton_Add" xml:space="preserve">
     <value>add</value>
   </data>
   <data name="AppBarMenuItemText" xml:space="preserve">
