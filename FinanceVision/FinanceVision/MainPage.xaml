@@ -52,7 +52,6 @@
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>
                     </phone:LongListSelector>
-                    <Image x:Name="myImage"/>
                 </phone:PivotItem>
                 <!--Pivot item twp-->
                 <phone:PivotItem Header="two">

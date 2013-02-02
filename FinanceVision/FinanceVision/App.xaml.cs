@@ -82,9 +82,6 @@ namespace FinanceVision
                 }
             }
 
-            viewModel = new ReceiptViewModel(DBConnectionString);
-            viewModel.LoadEntriesFromDatabase();
-
         }
 
         // Code to execute when the application is launching (eg, from Start)
