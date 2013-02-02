@@ -134,4 +134,10 @@
   <data name="AppBarMenu_DevSetup" xml:space="preserve">
     <value>DevSetup</value>
   </data>
+  <data name="AppBarButton_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="AppBarButton_Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
 </root>

@@ -70,6 +70,24 @@ namespace FinanceVision.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string AppBarButton_Cancel {
+            get {
+                return ResourceManager.GetString("AppBarButton_Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        public static string AppBarButton_Confirm {
+            get {
+                return ResourceManager.GetString("AppBarButton_Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DevSetup.
         /// </summary>
         public static string AppBarMenu_DevSetup {
