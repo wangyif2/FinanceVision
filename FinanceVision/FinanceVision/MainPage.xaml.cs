@@ -16,6 +16,7 @@ namespace FinanceVision
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        private ReceiptViewModel viewModel;
         MediaLibrary library;
         // Constructor
         public MainPage()
@@ -24,6 +25,11 @@ namespace FinanceVision
 
             // Sample code to localize the ApplicationBar
             BuildLocalizedApplicationBar();
+
+            string DBConnectionString = "Data Source=isostore:/ReceiptDatabase.sdf";
+            viewModel = new ReceiptViewModel(DBConnectionString);
+            viewModel.LoadEntriesFromDatabase();
+            DataContext = viewModel;
             library = new MediaLibrary();
         }
 
