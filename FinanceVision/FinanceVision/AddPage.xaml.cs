@@ -72,6 +72,9 @@ namespace FinanceVision
                 System.Windows.Media.Imaging.BitmapImage bmp = new System.Windows.Media.Imaging.BitmapImage();
                 bmp.SetSource(e.ChosenPhoto);
                 myImage.Source = bmp;
+
+                OcrClient ocrClient = new OcrClient();
+                ocrClient.StartOcrConversion(e.ChosenPhoto);
             }
             else if (e.TaskResult == TaskResult.Cancel)
             {
