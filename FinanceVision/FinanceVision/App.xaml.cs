@@ -63,7 +63,17 @@ namespace FinanceVision
             {
                 // Create the local database.
                 if (db.DatabaseExists() == false)
+                {
                     db.CreateDatabase();
+                    db.categories.InsertOnSubmit(new ActivityCategory { Name = "Personal" });
+                    db.categories.InsertOnSubmit(new ActivityCategory { Name = "Income" });
+                    db.categories.InsertOnSubmit(new ActivityCategory { Name = "Fun" });
+                    db.categories.InsertOnSubmit(new ActivityCategory { Name = "Food" });
+                    db.categories.InsertOnSubmit(new ActivityCategory { Name = "Transportation" });
+
+                    // Save categories to the database.
+                    db.SubmitChanges();
+                }
             }
 
         }

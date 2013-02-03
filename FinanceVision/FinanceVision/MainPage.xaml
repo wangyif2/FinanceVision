@@ -108,18 +108,28 @@
                     </ScrollViewer>
 
                 </phone:PivotItem>
-                
-                
+
+
                 <!--Pivot item twp-->
                 <phone:PivotItem Header="Today">
-                    <!--Double line list with text wrapping-->
-                    <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding AllReceiptEntries}">
+                    <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding AllCategories}">
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Margin="0,0,0,17" Orientation ="Horizontal">
-                                    <Image MaxHeight="50" MinHeight="50" Source="{Binding EntryCategory.ImagePath}"></Image>
-                                    <TextBlock Text="{Binding EntryName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
-                                    <TextBlock Text="{Binding EntryPrice}" TextWrapping="Wrap" Margin="12,0,12,0" Style="{StaticResource PhoneTextLargeStyle}"/>
+                                    <toolkit:ExpanderView Header="{Binding Name}"  x:Name="expander" Margin="0,0,0,5">
+                                        <!--Double line list with text wrapping-->
+                                        <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding AllReceiptEntries}">
+                                            <phone:LongListSelector.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Margin="0,0,0,17" Orientation ="Horizontal">
+                                                        <Image MaxHeight="50" MinHeight="50" Source="{Binding EntryCategory.ImagePath}"></Image>
+                                                        <TextBlock Text="{Binding EntryName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
+                                                        <TextBlock Text="{Binding EntryPrice}" TextWrapping="Wrap" Margin="12,0,12,0" Style="{StaticResource PhoneTextLargeStyle}"/>
+                                                    </StackPanel>
+                                                </DataTemplate>
+                                            </phone:LongListSelector.ItemTemplate>
+                                        </phone:LongListSelector>
+                                    </toolkit:ExpanderView>
                                 </StackPanel>
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>
@@ -135,7 +145,7 @@
                                     <Image MaxHeight="50" MinHeight="50" Source="{Binding EntryCategory.ImagePath}"></Image>
                                     <TextBlock Text="{Binding EntryName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
                                     <TextBlock Text="{Binding EntryPrice}" TextWrapping="Wrap" Margin="12,0,12,0" Style="{StaticResource PhoneTextLargeStyle}"/>
-                                    
+
                                 </StackPanel>
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>

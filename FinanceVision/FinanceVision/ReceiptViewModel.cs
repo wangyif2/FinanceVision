@@ -32,6 +32,18 @@ namespace FinanceVision
             }
         }
 
+        // All categories entries
+        private ObservableCollection<ActivityCategory> _allCategories;
+        public ObservableCollection<ActivityCategory> AllCategories
+        {
+            get { return _allCategories; }
+            set
+            {
+                _allCategories = value;
+                NotifyPropertyChanged("AllCategories");
+            }
+        }
+
 
         // Write changes in the data context to the database.
         public void SaveChangesToDB()
@@ -45,6 +57,10 @@ namespace FinanceVision
                               select entry;
 
             AllReceiptEntries = new ObservableCollection<ReceiptEntry>(entriesInDB);
+
+            var categoriesInDB = from ActivityCategory category in receiptDatabase.categories
+                              select category;
+            AllCategories = new ObservableCollection<ActivityCategory>(categoriesInDB);
             
         }
 
