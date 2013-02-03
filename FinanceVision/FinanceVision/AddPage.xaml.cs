@@ -62,21 +62,21 @@ namespace FinanceVision
             string DBConnectionString = "Data Source=isostore:/ReceiptDatabase.sdf";
 
             // Add entry to database with user input
-            //using (ReceiptDatabase db = new ReceiptDatabase(DBConnectionString))
-            //{
+            using (ReceiptDatabase db = new ReceiptDatabase(DBConnectionString))
+            {
                 
                 // Prepopulate the categories.
 
-                //db.entries.InsertOnSubmit(new ReceiptEntry
-                //    {
-                //        EntryName = Name.Text,
-                //        EntryPrice = float.Parse(Amount.Text),
-                //        EntryCategory = 
-                //    });
+                db.entries.InsertOnSubmit(new ReceiptEntry
+                    {
+                        EntryName = Name.Text,
+                        EntryPrice = float.Parse(Amount.Text),
+                        EntryCategory = new ActivityCategory {Name = CategoryPicker.SelectedItem.ToString()}
+                    });
                 
                 // Save categories to the database.
-                //db.SubmitChanges();
-            //}
+                db.SubmitChanges();
+            }
             NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
         }
 

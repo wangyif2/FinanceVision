@@ -43,10 +43,8 @@ namespace FinanceVision
         {
             var entriesInDB = from ReceiptEntry entry in receiptDatabase.entries
                               select entry;
-            
+
             AllReceiptEntries = new ObservableCollection<ReceiptEntry>(entriesInDB);
-            
-            AllReceiptEntries = new ObservableCollection<ReceiptEntry>(receiptDatabase.entries.ToList());
             
         }
 

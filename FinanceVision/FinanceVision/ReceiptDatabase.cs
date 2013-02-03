@@ -16,6 +16,7 @@ namespace FinanceVision
         }
 
         public Table<ReceiptEntry> entries;
+        public Table<ActivityCategory> categories;
 
     }
 
@@ -78,7 +79,7 @@ namespace FinanceVision
 
         private EntityRef<ActivityCategory> _entryCategory;
 
-        [Column]
+        [Association(Storage = "_entryCategory", ThisKey = "_categoryId", OtherKey = "Id", IsForeignKey = true)]
         public ActivityCategory EntryCategory
         {
             get { return _entryCategory.Entity;  }
