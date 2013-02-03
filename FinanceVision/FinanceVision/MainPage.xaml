@@ -12,7 +12,8 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="True"
+    toolkit:TiltEffect.IsTiltEnabled="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -68,26 +69,30 @@
                                          Margin="12,12,0,0"
                                          Source="/Images/SteakSandwich.jpg"
                                          Title="Income"
-                                         Notification="Income&#x0d;&#x0a;Summary"/>
+                                         Notification="Income&#x0d;&#x0a;Summary"
+                                         Tap="HubTile_Tap"/>
                             <toolkit:HubTile Grid.Row="1" Grid.Column="1" 
                                          Margin="12,12,0,0"
                                          Source="/Images/Fruits.jpg"
                                          Title="Food"
                                          Notification="Food&#x0d;&#x0a;Summary"
-                                         GroupTag="AddEntry"/>
+                                         GroupTag="AddEntry"
+                                         Tap="HubTile_Tap"/>
                             <toolkit:HubTile Grid.Row="2" Grid.Column="0" 
                                          Margin="12,12,0,0"
                                          Source="/Images/Pretzel.jpg"
                                          Title="Fun"
                                          Notification="Fun&#x0d;&#x0a;Summary"
                                          DisplayNotification="True"
-                                         GroupTag="AddEntry"/>
+                                         GroupTag="AddEntry"
+                                         Tap="HubTile_Tap"/>
                             <toolkit:HubTile Grid.Row="2" Grid.Column="1" 
                                          Margin="12,12,0,0"
                                          Source="/Images/Shrimp.jpg"
                                          Title="Transportation"
                                          Notification="Transportation&#x0d;&#x0a;Summary"
-                                         GroupTag="AddEntry"/>
+                                         GroupTag="AddEntry"
+                                         Tap="HubTile_Tap"/>
                         </Grid>
                     </ScrollViewer>
 

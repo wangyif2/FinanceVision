@@ -39,12 +39,7 @@ namespace FinanceVision
         {
             // Set the page's ApplicationBar to a new instance of ApplicationBar.
             ApplicationBar = new ApplicationBar();
-
-            // Create a new button and set the text value to the localized string from AppResources.
-            ApplicationBarIconButton appBarButton_add = new ApplicationBarIconButton(new Uri("/Images/add.png", UriKind.Relative));
-            appBarButton_add.Text = AppResources.AppBarButton_Add;
-            appBarButton_add.Click += AddButton_Click;
-            ApplicationBar.Buttons.Add(appBarButton_add);
+            ApplicationBar.Mode = ApplicationBarMode.Minimized;
 
             // Create a new menu item with the localized string from AppResources.
             ApplicationBarMenuItem AppBarMenu_DevSetup = new ApplicationBarMenuItem(AppResources.AppBarMenu_DevSetup);
@@ -102,7 +97,8 @@ namespace FinanceVision
 
         private void HubTile_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
-            NavigationService.Navigate(new Uri("/AddPage.xaml?category=personal", UriKind.Relative));
+            HubTile ht = (HubTile)sender;
+            NavigationService.Navigate(new Uri("/AddPage.xaml?category=" + ht.Title, UriKind.Relative));
 
         }
     }

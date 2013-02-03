@@ -21,9 +21,12 @@ namespace FinanceVision
         private SpeechRecognizerUI recoWithUI;
         private SpeechSynthesizer speechSynthesizer;
 
+        private bool photoChooserCanceled = false;
+        private string selectedCategory;
+
         public AddPage()
         {
-            //See photochoosercompleted for reason why this is commented out
+            //See photoChooser_Completed for reason why this is commented out
             //InitializeComponent();
             //BuildLocalizedApplicationBar();
 
@@ -48,7 +51,7 @@ namespace FinanceVision
             ApplicationBar.Buttons.Add(appBarButton_Confirm);
 
             ApplicationBarIconButton appBarButton_Cancel = new ApplicationBarIconButton(new Uri("/Images/cancel.png", UriKind.Relative));
-            appBarButton_Cancel.Text = AppResources.AppBarButton_Confirm;
+            appBarButton_Cancel.Text = AppResources.AppBarButton_Cancel;
             appBarButton_Cancel.Click += CancelButton_Click;
             ApplicationBar.Buttons.Add(appBarButton_Cancel);
 
@@ -90,7 +93,7 @@ namespace FinanceVision
                     {
                         EntryName = Name.Text,
                         EntryPrice = float.Parse(Amount.Text),
-                        EntryCategory = (ReceiptEntry.ActivityCategory) Enum.ToObject(typeof(ReceiptEntry.ActivityCategory), Category.SelectedIndex)//ReceiptEntry.Category.Food
+                        EntryCategory = (ReceiptEntry.ActivityCategory) Enum.ToObject(typeof(ReceiptEntry.ActivityCategory), CategoryPicker.SelectedIndex)//ReceiptEntry.Category.Food
                     });
                 
                 // Save categories to the database.
@@ -100,13 +103,16 @@ namespace FinanceVision
 
         void photoChooser_Completed(object sender, PhotoResult e)
         {
+            //This is here to create the illusion of navigating to camera first 
+            //then second page 
+            InitializeComponent();
+            BuildLocalizedApplicationBar();
+
+            if(selectedCategory != null)
+                CategoryPicker.SelectedItem = selectedCategory;
+
             if (e.TaskResult == TaskResult.OK)
             {
-                //This is here to create the illusion of navigating to camera first 
-                //then second page 
-                InitializeComponent();
-                BuildLocalizedApplicationBar();
-
                 //Code to display the photo on the page in an image control named myImage.
                 System.Windows.Media.Imaging.BitmapImage bmp = new System.Windows.Media.Imaging.BitmapImage();
                 bmp.SetSource(e.ChosenPhoto);
@@ -117,7 +123,7 @@ namespace FinanceVision
             }
             else if (e.TaskResult == TaskResult.Cancel)
             {
-                NavigationService.GoBack();
+                photoChooserCanceled = true;
             }
         }
 
@@ -137,17 +143,18 @@ namespace FinanceVision
         {
             base.OnNavigatedTo(e);
 
-            string category = "";
             if (e.NavigationMode == NavigationMode.New)
             {
                 photoChooser.Show();
-                if (NavigationContext.QueryString.TryGetValue("category", out category))
-                {
-                    //do something with the parameter
-                    int x = 0;
-                }
+                NavigationContext.QueryString.TryGetValue("category", out selectedCategory);
 
                 //cam.Show();
+            }
+            else if (e.NavigationMode == NavigationMode.Back && 
+                     photoChooserCanceled && 
+                     NavigationService.CanGoBack)
+            {
+                NavigationService.GoBack();
             }
         }
 

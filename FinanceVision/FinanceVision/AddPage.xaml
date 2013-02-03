@@ -43,11 +43,12 @@
             <TextBox x:Name="Name" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"/>
             <TextBlock Text="Category" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
             <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
-                <toolkit:ListPicker x:Name="Category">
-                    <TextBlock Text="Personal"/>
-                    <TextBlock Text="Food"/>
-                    <TextBlock Text="Entertainment"/>
-                    <TextBlock Text="Transportation"/>
+                <toolkit:ListPicker x:Name="CategoryPicker">
+                    <sys:String>Personal</sys:String>
+                    <sys:String>Income</sys:String>
+                    <sys:String>Fun</sys:String>
+                    <sys:String>Food</sys:String>
+                    <sys:String>Transportation</sys:String>
                 </toolkit:ListPicker>
             </StackPanel>
             <TextBlock Text="Amount" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
