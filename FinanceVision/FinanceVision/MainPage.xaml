@@ -105,14 +105,13 @@
                             <toolkit:HubTile Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
                                          Margin="12,12,0,0"
                                          Source="/Images/Bill_Icon_202.png"
-                                         Title="Bill"
-                                         Name="Bill"
+                                         Title="Bills"
+                                         Name="Bills"
                                          Notification="Transportation&#x0d;&#x0a;Summary"
                                          GroupTag="AddEntry"
                                          Tap="HubTile_Tap"
                                          Size="Medium"
                                          Hold="HubTile_Hold"/>
-
                         </Grid>
                     </ScrollViewer>
 
@@ -168,8 +167,8 @@
                         <phone:LongListSelector Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,-12,0" ItemsSource="{Binding AllReceiptEntries}">
                             <phone:LongListSelector.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel>
-                                        <StackPanel Margin="0,0,0,17" Orientation ="Horizontal">
+                                    <StackPanel Margin="0,0,0,17" >
+                                        <StackPanel Orientation ="Horizontal">
                                             <Image MaxHeight="50" MinHeight="50" Source="{Binding EntryCategory.ImagePath}"></Image>
                                             <TextBlock Text="{Binding EntryName}" TextWrapping="Wrap" 
                                                        Style="{StaticResource PhoneTextLargeStyle}"/>
@@ -177,7 +176,7 @@
                                                        Foreground="Red"
                                                        Style="{StaticResource PhoneTextLargeStyle}"/>
                                         </StackPanel>
-                                        <TextBlock Text="02.03" TextWrapping="Wrap" 
+                                        <TextBlock Text="02.03" TextWrapping="Wrap"
                                                    Style="{StaticResource PhoneTextSmallStyle}"/>
                                     </StackPanel>
                                 </DataTemplate>

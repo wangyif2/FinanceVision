@@ -48,7 +48,7 @@
             <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
                 <toolkit:ListPicker x:Name="CategoryPicker">
                     <sys:String>Personal</sys:String>
-                    <sys:String>Income</sys:String>
+                    <sys:String>Bills</sys:String>
                     <sys:String>Fun</sys:String>
                     <sys:String>Food</sys:String>
                     <sys:String>Transportation</sys:String>
