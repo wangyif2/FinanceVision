@@ -154,6 +154,7 @@
     <Content Include="Images\add_dark.png" />
     <Content Include="Images\cancel.png" />
     <Content Include="Images\check.png" />
+    <Content Include="Images\edit_dark.png" />
     <Content Include="Images\feature.camera.png" />
     <Content Include="Images\Finance_Vision_Tile_Flip_Medium_1.png" />
     <Content Include="Images\Food_Icon_202.png" />

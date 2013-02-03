@@ -142,11 +142,17 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <StackPanel x:Name="WeekGoalStack">
+                        <StackPanel x:Name="WeekGoalStack" Margin="0,0,0,20">
                             <toolkit:PhoneTextBox x:Name="AddWeekGoal" Hint="my goal is to stay under..."
                                                   ActionIcon="/Images/add_light.png"
                                                   ActionIconTapped="AddGoal_Tapped"
                                                   InputScope="Number"/>
+                            <Button x:Name="EditWeekGoal" Visibility="Collapsed" BorderThickness="0" Click="EditGoal_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock x:Name="EditWeekGoal_TextBox" Text="My goal is to stay under " VerticalAlignment="Center"/>
+                                    <Image Source="Images/edit_dark.png" Margin="30,0" Height="40" Width="40" />
+                                </StackPanel>
+                            </Button>
                         </StackPanel>
                         <phone:LongListSelector Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,-12,0" ItemsSource="{Binding AllReceiptEntries}">
                             <phone:LongListSelector.ItemTemplate>
@@ -177,11 +183,17 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <StackPanel x:Name="MonthGoalStack">
+                        <StackPanel x:Name="MonthGoalStack" Margin="0,0,0,20">
                             <toolkit:PhoneTextBox x:Name="AddMonthGoal" Hint="my goal is to stay under..."
                                                   ActionIcon="/Images/add_light.png"
                                                   ActionIconTapped="AddGoal_Tapped"
                                                   InputScope="Number"/>
+                            <Button x:Name="EditMonthGoal" Visibility="Collapsed" BorderThickness="0" Click="EditGoal_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock x:Name="EditMonthGoal_TextBox" Text="My goal is to stay under " VerticalAlignment="Center"/>
+                                    <Image Source="Images/edit_dark.png" Margin="30,0" Height="40" Width="40" />
+                                </StackPanel>
+                            </Button>
                         </StackPanel>
                         <!--Double line list with text wrapping-->
                         <phone:LongListSelector Grid.Row="1" Margin="0,0,-12,0" ItemsSource="{Binding AllReceiptEntries}">
