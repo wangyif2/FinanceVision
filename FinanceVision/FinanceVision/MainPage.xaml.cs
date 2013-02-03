@@ -11,6 +11,7 @@ using FinanceVision.Resources;
 using Microsoft.Xna.Framework.Media;
 using System.IO;
 using System.Windows.Media.Imaging;
+using Windows.Phone.Speech.Recognition;
 
 namespace FinanceVision
 {
@@ -18,6 +19,7 @@ namespace FinanceVision
     {
 
         MediaLibrary library;
+        SpeechRecognizerUI recoWithUI;
         // Constructor
         public MainPage()
         {
@@ -46,6 +48,22 @@ namespace FinanceVision
             ApplicationBarMenuItem AppBarMenu_DevSetup = new ApplicationBarMenuItem(AppResources.AppBarMenu_DevSetup);
             AppBarMenu_DevSetup.Click += AppBarMenu_DevSetup_Click;
             ApplicationBar.MenuItems.Add(AppBarMenu_DevSetup);
+
+            ApplicationBarMenuItem AppBarMenu_Speech = new ApplicationBarMenuItem(AppResources.AppBarMenu_Speech);
+            AppBarMenu_Speech.Click += AppBarMenu_Speech_Click;
+            ApplicationBar.MenuItems.Add(AppBarMenu_Speech);
+        }
+
+        private async void AppBarMenu_Speech_Click(object sender, EventArgs e)
+        {
+            // Create an instance of SpeechRecognizerUI.
+            this.recoWithUI = new SpeechRecognizerUI();
+
+            // Start recognition (load the dictation grammar by default).
+            SpeechRecognitionUIResult recoResult = await recoWithUI.RecognizeWithUIAsync();
+
+            // Do something with the recognition result.
+            MessageBox.Show(string.Format("You said {0}.", recoResult.RecognitionResult.Text));
         }
 
         // This is setup code that loads sample images into the image library 
