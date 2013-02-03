@@ -17,10 +17,11 @@ namespace FinanceVision
         //private CameraCaptureTask cam;
         private PhotoChooserTask photoChooser;
         private bool photoChooserCanceled = false;
+        private string selectedCategory;
 
         public AddPage()
         {
-            //See OnNavigatedTo for reason why this is commented out
+            //See photoChooser_Completed for reason why this is commented out
             //InitializeComponent();
             //BuildLocalizedApplicationBar();
 
@@ -79,10 +80,16 @@ namespace FinanceVision
 
         void photoChooser_Completed(object sender, PhotoResult e)
         {
+            //This is here to create the illusion of navigating to camera first 
+            //then second page 
+            InitializeComponent();
+            BuildLocalizedApplicationBar();
+
+            if(selectedCategory != null)
+                CategoryPicker.SelectedItem = selectedCategory;
+
             if (e.TaskResult == TaskResult.OK)
             {
-
-
                 //Code to display the photo on the page in an image control named myImage.
                 System.Windows.Media.Imaging.BitmapImage bmp = new System.Windows.Media.Imaging.BitmapImage();
                 bmp.SetSource(e.ChosenPhoto);
@@ -113,21 +120,10 @@ namespace FinanceVision
         {
             base.OnNavigatedTo(e);
 
-            string category = "";
             if (e.NavigationMode == NavigationMode.New)
             {
                 photoChooser.Show();
-
-                //This is here to create the illusion of navigating to camera first 
-                //then second page 
-                InitializeComponent();
-                BuildLocalizedApplicationBar();
-
-                if (NavigationContext.QueryString.TryGetValue("category", out category))
-                {
-                    //do something with the parameter
-                    CategoryPicker.SelectedItem = category;
-                }
+                NavigationContext.QueryString.TryGetValue("category", out selectedCategory);
 
                 //cam.Show();
             }
