@@ -74,28 +74,23 @@ namespace FinanceVision
             }
         }
 
-        public enum ActivityCategory
-        {
-            Personal = 0,
-            Food = 1,
-            Entertainment = 2,
-            Transportation = 3,
-        }
+        [Column] internal int _categoryId;
 
-        private ActivityCategory _entryCategory;
+        private EntityRef<ActivityCategory> _entryCategory;
 
         [Column]
         public ActivityCategory EntryCategory
         {
-            get { return _entryCategory;  }
+            get { return _entryCategory.Entity;  }
             set
             {
-                if (_entryCategory != value)
+                NotifyPropertyChanging("EntryCategory");
+                _entryCategory.Entity = value;
+                if (value != null)
                 {
-                    NotifyPropertyChanging("EntryCategory");
-                    _entryCategory = value;
-                    NotifyPropertyChanged("EntryCategory");
+                    _categoryId = value.Id;
                 }
+                NotifyPropertyChanged("EntryCategory");
             }
         }
 
@@ -118,6 +113,105 @@ namespace FinanceVision
                 PropertyChanging(this, new PropertyChangingEventArgs(propertyName));
             }
         }
+    }
+
+    [Table]
+    public class ActivityCategory : INotifyPropertyChanged, INotifyPropertyChanging
+    {
+
+        // Define ID: private field, public property, and database column.
+        private int _id;
+
+        [Column(DbType = "INT NOT NULL IDENTITY", IsDbGenerated = true, IsPrimaryKey = true)]
+        public int Id
+        {
+            get { return _id; }
+            set
+            {
+                NotifyPropertyChanging("Id");
+                _id = value;
+                NotifyPropertyChanged("Id");
+            }
+        }
+
+        // Define category name: private field, public property, and database column.
+        private string _name;
+
+        [Column]
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                NotifyPropertyChanging("Name");
+                _name = value;
+                NotifyPropertyChanged("Name");
+            }
+        }
+
+        // Define the entity set for the collection side of the relationship.
+        private EntitySet<ReceiptEntry> _entries;
+
+        [Association(Storage = "_entries", OtherKey = "_categoryId", ThisKey = "Id")]
+        public EntitySet<ReceiptEntry> Entries
+        {
+            get { return this._entries; }
+            set { this._entries.Assign(value); }
+        }
+
+
+        // Assign handlers for the add and remove operations, respectively.
+        public ActivityCategory()
+        {
+            _entries = new EntitySet<ReceiptEntry>(
+                new Action<ReceiptEntry>(this.attach_Entry),
+                new Action<ReceiptEntry>(this.detach_Entry)
+                );
+        }
+
+        // Called during an add operation
+        private void attach_Entry(ReceiptEntry entry)
+        {
+            NotifyPropertyChanging("ReceiptEntry");
+            entry.EntryCategory = this;
+        }
+
+        // Called during a remove operation
+        private void detach_Entry(ReceiptEntry entry)
+        {
+            NotifyPropertyChanging("ReceiptEntry");
+            entry.EntryCategory = null;
+        }
+
+        #region INotifyPropertyChanged Members
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        // Used to notify that a property changed
+        private void NotifyPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        #endregion
+
+        #region INotifyPropertyChanging Members
+
+        public event PropertyChangingEventHandler PropertyChanging;
+
+        // Used to notify that a property is about to change
+        private void NotifyPropertyChanging(string propertyName)
+        {
+            if (PropertyChanging != null)
+            {
+                PropertyChanging(this, new PropertyChangingEventArgs(propertyName));
+            }
+        }
+
+        #endregion
     }
 
 }

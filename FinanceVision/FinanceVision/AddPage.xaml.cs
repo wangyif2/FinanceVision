@@ -51,7 +51,7 @@ namespace FinanceVision
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Ivan Please Add Stuff Here");
+            NavigationService.GoBack();
         }
 
         private void ConfirmButton_Click(object sender, EventArgs e)
@@ -60,20 +60,21 @@ namespace FinanceVision
             string DBConnectionString = "Data Source=isostore:/ReceiptDatabase.sdf";
 
             // Add entry to database with user input
-            using (ReceiptDatabase db = new ReceiptDatabase(DBConnectionString))
-            {
+            //using (ReceiptDatabase db = new ReceiptDatabase(DBConnectionString))
+            //{
                 
                 // Prepopulate the categories.
-                db.entries.InsertOnSubmit(new ReceiptEntry
-                    {
-                        EntryName = Name.Text,
-                        EntryPrice = float.Parse(Amount.Text),
-                        EntryCategory = (ReceiptEntry.ActivityCategory) Enum.ToObject(typeof(ReceiptEntry.ActivityCategory), Category.SelectedIndex)//ReceiptEntry.Category.Food
-                    });
+                //db.entries.InsertOnSubmit(new ReceiptEntry
+                //    {
+                //        EntryName = Name.Text,
+                //        EntryPrice = float.Parse(Amount.Text),
+                //        EntryCategory = 
+                //    });
                 
                 // Save categories to the database.
-                db.SubmitChanges();
-            }
+                //db.SubmitChanges();
+            //}
+            NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
         }
 
         void photoChooser_Completed(object sender, PhotoResult e)

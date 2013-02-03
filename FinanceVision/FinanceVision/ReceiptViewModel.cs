@@ -21,8 +21,8 @@ namespace FinanceVision
         }
 
         // All receipt entries
-        private List<ReceiptEntry> _allReceiptEntries;
-        public List<ReceiptEntry> AllReceiptEntries
+        private ObservableCollection<ReceiptEntry> _allReceiptEntries;
+        public ObservableCollection<ReceiptEntry> AllReceiptEntries
         {
             get { return _allReceiptEntries; }
             set
@@ -43,10 +43,10 @@ namespace FinanceVision
         {
             var entriesInDB = from ReceiptEntry entry in receiptDatabase.entries
                               select entry;
-
-            AllReceiptEntries = new List<ReceiptEntry>(entriesInDB);
             
-            AllReceiptEntries = receiptDatabase.entries.ToList();
+            AllReceiptEntries = new ObservableCollection<ReceiptEntry>(entriesInDB);
+            
+            AllReceiptEntries = new ObservableCollection<ReceiptEntry>(receiptDatabase.entries.ToList());
             
         }
 
