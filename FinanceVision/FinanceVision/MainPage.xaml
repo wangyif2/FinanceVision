@@ -104,7 +104,7 @@
                                          Hold="HubTile_Hold"/>
                             <toolkit:HubTile Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
                                          Margin="12,12,0,0"
-                                         Source="/Images/Bill_Icon_202.png"
+                                         Source="/Images/Bills_Icon_202.png"
                                          Title="Bills"
                                          Name="Bills"
                                          Notification="Transportation&#x0d;&#x0a;Summary"
@@ -127,12 +127,12 @@
                                 <StackPanel Margin="0,0,0,0" Orientation ="Horizontal">
                                     <Image MaxHeight="50" MinHeight="50" Source="{Binding EntryCategory.ImagePath}"></Image>
                                     <TextBlock Text="{Binding EntryName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
-                                    <TextBlock Text="{Binding EntryPrice}" TextWrapping="Wrap" Margin="12,0,12,0" Style="{StaticResource PhoneTextLargeStyle}"/>
+                                    <TextBlock Text="{Binding EntryPrice}" TextWrapping="Wrap" Margin="12,0,12,0" 
+                                               Foreground="red" Style="{StaticResource PhoneTextLargeStyle}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>
                     </phone:LongListSelector>
-
                 </phone:PivotItem>
                 <phone:PivotItem Header="This Week">
                     <Grid Margin="0,-20,0,0">

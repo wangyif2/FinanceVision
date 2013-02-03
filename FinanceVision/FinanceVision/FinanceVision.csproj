@@ -152,6 +152,8 @@
     </Content>
     <Content Include="Images\add_light.png" />
     <Content Include="Images\add_dark.png" />
+    <Content Include="Images\Bills_Icon_202.png" />
+    <Content Include="Images\Bills_Icon_202_white.png" />
     <Content Include="Images\cancel.png" />
     <Content Include="Images\check.png" />
     <Content Include="Images\edit_dark.png" />
