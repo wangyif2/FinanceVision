@@ -134,8 +134,8 @@
   <data name="AppBarButton_Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
-  <data name="AppBarButton_Confirm" xml:space="preserve">
-    <value>Confirm</value>
+  <data name="AppBarButton_Save" xml:space="preserve">
+    <value>Save</value>
   </data>
   <data name="AppBarMenu_Speech" xml:space="preserve">
     <value>Speak</value>

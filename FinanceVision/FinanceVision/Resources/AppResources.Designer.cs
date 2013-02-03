@@ -79,11 +79,11 @@ namespace FinanceVision.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Confirm.
+        ///   Looks up a localized string similar to Save.
         /// </summary>
-        public static string AppBarButton_Confirm {
+        public static string AppBarButton_Save {
             get {
-                return ResourceManager.GetString("AppBarButton_Confirm", resourceCulture);
+                return ResourceManager.GetString("AppBarButton_Save", resourceCulture);
             }
         }
         

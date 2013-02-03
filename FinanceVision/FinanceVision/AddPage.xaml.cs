@@ -35,6 +35,7 @@ namespace FinanceVision
             photoChooser.Completed += photoChooser_Completed;
 
             speechSynthesizer = new SpeechSynthesizer();
+            SpeakButton_Click(null, null);
         }
 
         // Code for building a localized ApplicationBar
@@ -44,10 +45,10 @@ namespace FinanceVision
             ApplicationBar = new ApplicationBar();
 
             // Create a new button and set the text value to the localized string from AppResources.
-            ApplicationBarIconButton appBarButton_Confirm = new ApplicationBarIconButton(new Uri("/Images/save.png", UriKind.Relative));
-            appBarButton_Confirm.Text = AppResources.AppBarButton_Confirm;
-            appBarButton_Confirm.Click += ConfirmButton_Click;
-            ApplicationBar.Buttons.Add(appBarButton_Confirm);
+            ApplicationBarIconButton appBarButton_Save = new ApplicationBarIconButton(new Uri("/Images/save.png", UriKind.Relative));
+            appBarButton_Save.Text = AppResources.AppBarButton_Save;
+            appBarButton_Save.Click += SaveButton_Click;
+            ApplicationBar.Buttons.Add(appBarButton_Save);
 
             ApplicationBarIconButton appBarButton_Cancel = new ApplicationBarIconButton(new Uri("/Images/cancel.png", UriKind.Relative));
             appBarButton_Cancel.Text = AppResources.AppBarButton_Cancel;
@@ -100,31 +101,43 @@ namespace FinanceVision
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            NavigationService.GoBack();
+            if (!string.IsNullOrEmpty(Name.Text) || !string.IsNullOrEmpty(Amount.Text))
+            {
+                MessageBoxResult result = MessageBox.Show("Are you sure...?", "", MessageBoxButton.OKCancel);
+                if(result == MessageBoxResult.OK)
+                    NavigationService.GoBack();
+            }
         }
 
-        private void ConfirmButton_Click(object sender, EventArgs e)
+        private void SaveButton_Click(object sender, EventArgs e)
         {
-
-            string DBConnectionString = "Data Source=isostore:/ReceiptDatabase.sdf";
-
-            // Add entry to database with user input
-            using (ReceiptDatabase db = new ReceiptDatabase(DBConnectionString))
+            if (string.IsNullOrEmpty(Name.Text) || string.IsNullOrWhiteSpace(Name.Text) ||
+                string.IsNullOrEmpty(Amount.Text) || string.IsNullOrWhiteSpace(Amount.Text))
             {
-
-                // Prepopulate the categories.
-
-                db.entries.InsertOnSubmit(new ReceiptEntry
-                    {
-                        EntryName = Name.Text,
-                        EntryPrice = float.Parse(Amount.Text),
-                        EntryCategory = new ActivityCategory {Name = CategoryPicker.SelectedItem.ToString()}
-                    });
-
-                // Save categories to the database.
-                db.SubmitChanges();
+                MessageBox.Show("Something is missing...", "", MessageBoxButton.OK);
             }
-            NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+            else
+            {
+                string DBConnectionString = "Data Source=isostore:/ReceiptDatabase.sdf";
+
+                // Add entry to database with user input
+                using (ReceiptDatabase db = new ReceiptDatabase(DBConnectionString))
+                {
+
+                    // Prepopulate the categories.
+
+                    db.entries.InsertOnSubmit(new ReceiptEntry
+                        {
+                            EntryName = Name.Text,
+                            EntryPrice = float.Parse(Amount.Text),
+                            EntryCategory = new ActivityCategory { Name = CategoryPicker.SelectedItem.ToString() }
+                        });
+
+                    // Save categories to the database.
+                    db.SubmitChanges();
+                }
+                NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+            }
         }
 
         void photoChooser_Completed(object sender, PhotoResult e)
