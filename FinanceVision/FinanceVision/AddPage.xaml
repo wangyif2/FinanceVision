@@ -43,7 +43,7 @@
             <TextBox x:Name="Name" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"/>
             <TextBlock Text="Category" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
             <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
-                <toolkit:ListPicker>
+                <toolkit:ListPicker x:Name="Category">
                     <TextBlock Text="Personal"/>
                     <TextBlock Text="Food"/>
                     <TextBlock Text="Entertainment"/>
