@@ -19,8 +19,11 @@ namespace FinanceVision
 {
     public partial class MainPage : PhoneApplicationPage
     {
+<<<<<<< HEAD
         public static ReceiptViewModel viewModel;
         MediaLibrary library;
+=======
+>>>>>>> a620ef4d390874fb223ab0731441166eded242b4
         SpeechRecognizerUI recoWithUI;
         SpeechSynthesizer speechSynthesizer = new SpeechSynthesizer();
         // Constructor
@@ -30,9 +33,18 @@ namespace FinanceVision
 
             // Sample code to localize the ApplicationBar
             BuildLocalizedApplicationBar();
-
             LoadDatabase();
-            library = new MediaLibrary();
+        }
+
+        internal void LoadDatabase()
+        {
+            ReceiptViewModel viewModel;
+
+            // Load database and display
+            string DBConnectionString = "Data Source=isostore:/ReceiptDatabase.sdf";
+            viewModel = new ReceiptViewModel(DBConnectionString);
+            viewModel.LoadEntriesFromDatabase();
+            DataContext = viewModel;
         }
 
         // Code for building a localized ApplicationBar
@@ -43,29 +55,16 @@ namespace FinanceVision
             ApplicationBar.Mode = ApplicationBarMode.Minimized;
 
             // Create a new menu item with the localized string from AppResources.
-            ApplicationBarMenuItem AppBarMenu_Speech = new ApplicationBarMenuItem(AppResources.AppBarMenu_Speech);
-            AppBarMenu_Speech.Click += AppBarMenu_Speech_Click;
-            ApplicationBar.MenuItems.Add(AppBarMenu_Speech);
+            ApplicationBarMenuItem AppBarMenu_Settings = new ApplicationBarMenuItem(AppResources.AppBarMenu_Settings);
+            AppBarMenu_Settings.Click += AppBarMenu_Settings_Click;
+            ApplicationBar.MenuItems.Add(AppBarMenu_Settings);
         }
 
-        private async void AppBarMenu_Speech_Click(object sender, EventArgs e)
+        private void AppBarMenu_Settings_Click(object sender, EventArgs e)
         {
-            // Create an instance of SpeechRecognizerUI.
-            this.recoWithUI = new SpeechRecognizerUI();
-
-            // Start recognition (load the dictation grammar by default).
-            //            await speechSynthesizer.SpeakTextAsync("");
-
-            SpeechRecognitionUIResult recoResult = await recoWithUI.RecognizeWithUIAsync();
-
-            // Do something with the recognition result.
-            MessageBox.Show(string.Format("You said {0}.", recoResult.RecognitionResult.Text));
+            throw new NotImplementedException();
         }
-
-        private void AddButton_Click(object sender, EventArgs e)
-        {
-            NavigationService.Navigate(new Uri("/AddPage.xaml", UriKind.Relative));
-        }
+<<<<<<< HEAD
         
         internal void LoadDatabase()
         {
@@ -75,15 +74,20 @@ namespace FinanceVision
             viewModel.LoadEntriesFromDatabase();
             DataContext = viewModel;
         }
+=======
+
+>>>>>>> a620ef4d390874fb223ab0731441166eded242b4
 
         private void HubTile_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
             HubTile ht = (HubTile)sender;
             NavigationService.Navigate(new Uri("/AddPage.xaml?category=" + ht.Title, UriKind.Relative));
-
         }
 
-
+        private void HubTile_Hold(object sender, GestureEventArgs e)
+        {
+            CreateLiveTile((HubTile)sender);
+        }
 
         private void CreateLiveTile(HubTile hubtile)
         {
@@ -108,32 +112,6 @@ namespace FinanceVision
                 }
             }
             else MessageBox.Show("The tile is already pinned");
-
-        }
-
-        private void UIElement_OnHold_Personal(object sender, GestureEventArgs e)
-        {
-            CreateLiveTile(Personal);
-        }
-
-        private void UIElement_OnHold_Income(object sender, GestureEventArgs e)
-        {
-            CreateLiveTile(Income);
-        }
-
-        private void UIElement_OnHold_Food(object sender, GestureEventArgs e)
-        {
-            CreateLiveTile(Food);
-        }
-
-        private void UIElement_OnHold_Fun(object sender, GestureEventArgs e)
-        {
-            CreateLiveTile(Fun);
-        }
-
-        private void UIElement_OnHold_Transportation(object sender, GestureEventArgs e)
-        {
-            CreateLiveTile(Transportation);
         }
     }
 }

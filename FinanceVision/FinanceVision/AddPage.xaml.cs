@@ -149,23 +149,14 @@ namespace FinanceVision
         {
             if (e.TaskResult == TaskResult.OK)
             {
+                AddImageButton.Visibility = System.Windows.Visibility.Collapsed;
+                myImage.Visibility = System.Windows.Visibility.Visible;
+
                 //Code to display the photo on the page in an image control named myImage.
                 System.Windows.Media.Imaging.BitmapImage bmp = new System.Windows.Media.Imaging.BitmapImage();
                 bmp.SetSource(e.ChosenPhoto);
                 myImage.Source = bmp;
             }
-        }
-
-        void cam_Completed(object sender, PhotoResult e)
-        {
-            if (e.TaskResult == TaskResult.OK)
-            {
-                //Code to display the photo on the page in an image control named myImage.
-                System.Windows.Media.Imaging.BitmapImage bmp = new System.Windows.Media.Imaging.BitmapImage();
-                bmp.SetSource(e.ChosenPhoto);
-                myImage.Source = bmp;
-            }
-
         }
 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
@@ -177,6 +168,11 @@ namespace FinanceVision
             {
                 CategoryPicker.SelectedItem = selectedCategory;
             }
+        }
+
+        private void AddImageButton_Click(object sender, RoutedEventArgs e)
+        {
+            photoChooser.Show();
         }
 
     }
