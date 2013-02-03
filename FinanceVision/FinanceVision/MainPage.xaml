@@ -67,7 +67,7 @@
                                          DisplayNotification="True"
                                          GroupTag="AddEntry"
                                          Tap="HubTile_Tap"
-                                         Hold="UIElement_OnHold_Personal"/>
+                                         Hold="HubTile_Hold"/>
                             <toolkit:HubTile Grid.Row="3" Grid.Column="0" 
                                          Margin="12,12,0,0"
                                          Source="/Images/Income_Icon_202.png"
@@ -75,7 +75,7 @@
                                          Name ="Income"
                                          Notification="Income&#x0d;&#x0a;Summary"
                                          Tap="HubTile_Tap"
-                                         Hold="UIElement_OnHold_Income"/>
+                                         Hold="HubTile_Hold"/>
                             <toolkit:HubTile Grid.Row="1" Grid.Column="1" 
                                          Margin="12,12,0,0"
                                          Source="/Images/Food_Icon_202.png"
@@ -84,7 +84,7 @@
                                          Notification="Food&#x0d;&#x0a;Summary"
                                          GroupTag="AddEntry"
                                          Tap="HubTile_Tap"
-                                         Hold="UIElement_OnHold_Food"/>
+                                         Hold="HubTile_Hold"/>
                             <toolkit:HubTile Grid.Row="2" Grid.Column="0" 
                                          Margin="12,12,0,0"
                                          Source="/Images/Fun_Icon_202.png"
@@ -94,7 +94,7 @@
                                          DisplayNotification="True"
                                          GroupTag="AddEntry"
                                          Tap="HubTile_Tap"
-                                         Hold="UIElement_OnHold_Fun"/>
+                                         Hold="HubTile_Hold"/>
                             <toolkit:HubTile Grid.Row="2" Grid.Column="1" 
                                          Margin="12,12,0,0"
                                          Source="/Images/Transportation_Icon_202.png"
@@ -103,7 +103,7 @@
                                          Notification="Transportation&#x0d;&#x0a;Summary"
                                          GroupTag="AddEntry"
                                          Tap="HubTile_Tap"
-                                          Hold="UIElement_OnHold_Transportation"/>
+                                         Hold="HubTile_Hold"/>
                         </Grid>
                     </ScrollViewer>
 

@@ -143,4 +143,7 @@
   <data name="AppBarButton_Speak" xml:space="preserve">
     <value>Speak</value>
   </data>
+  <data name="AppBarMenu_Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
 </root>
