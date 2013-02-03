@@ -19,6 +19,11 @@ namespace FinanceVision
 {
     public partial class MainPage : PhoneApplicationPage
     {
+<<<<<<< HEAD
+        public static ReceiptViewModel viewModel;
+        MediaLibrary library;
+=======
+>>>>>>> a620ef4d390874fb223ab0731441166eded242b4
         SpeechRecognizerUI recoWithUI;
         SpeechSynthesizer speechSynthesizer = new SpeechSynthesizer();
         // Constructor
@@ -59,7 +64,19 @@ namespace FinanceVision
         {
             throw new NotImplementedException();
         }
+<<<<<<< HEAD
+        
+        internal void LoadDatabase()
+        {
+            // Load database and display
+            string DBConnectionString = "Data Source=isostore:/ReceiptDatabase.sdf";
+            viewModel = new ReceiptViewModel(DBConnectionString);
+            viewModel.LoadEntriesFromDatabase();
+            DataContext = viewModel;
+        }
+=======
 
+>>>>>>> a620ef4d390874fb223ab0731441166eded242b4
 
         private void HubTile_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
