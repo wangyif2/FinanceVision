@@ -36,6 +36,8 @@ namespace FinanceVision
             photoChooser = new PhotoChooserTask();
             photoChooser.ShowCamera = true;
             photoChooser.Completed += photoChooser_Completed;
+
+            speechSynthesizer = new SpeechSynthesizer();
         }
 
         // Code for building a localized ApplicationBar
@@ -63,15 +65,15 @@ namespace FinanceVision
 
         private async void SpeakButton_Click(object sender, EventArgs e)
         {
-            await speechSynthesizer.SpeakTextAsync("Say the time name");
+            await speechSynthesizer.SpeakTextAsync("Say the item name");
             this.recoWithUI = new SpeechRecognizerUI();
             SpeechRecognitionUIResult recoResultName = await recoWithUI.RecognizeWithUIAsync();
-            Name.Text = recoResultName.RecognitionResult.ToString();
+            Name.Text = recoResultName.RecognitionResult.Text;
 
             await speechSynthesizer.SpeakTextAsync("Say the item price");
             this.recoWithUI = new SpeechRecognizerUI();
             SpeechRecognitionUIResult recoResultPrice = await recoWithUI.RecognizeWithUIAsync();
-            Amount.Text = recoResultPrice.RecognitionResult.ToString();
+            Amount.Text = recoResultPrice.RecognitionResult.Text;
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
