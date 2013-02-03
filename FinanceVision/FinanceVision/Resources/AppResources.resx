@@ -140,4 +140,7 @@
   <data name="AppBarButton_Confirm" xml:space="preserve">
     <value>Confirm</value>
   </data>
+  <data name="AppBarMenu_Speech" xml:space="preserve">
+    <value>Speak</value>
+  </data>
 </root>
