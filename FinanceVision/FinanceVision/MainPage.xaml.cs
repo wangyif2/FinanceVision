@@ -62,7 +62,22 @@ namespace FinanceVision
         private void AddGoal_Tapped(object sender, EventArgs e)
         {
             PhoneTextBox phonetb = (PhoneTextBox)sender;
-            MessageBox.Show("Ivan add goal here", "Your goal was to spend under " + phonetb.Text, MessageBoxButton.OK);
+            if (!String.IsNullOrEmpty(phonetb.Text))
+            {
+                phonetb.Visibility = System.Windows.Visibility.Collapsed;
+                Button bt = (Button)FindName(phonetb.Name.Replace("Add", "Edit"));
+                ((TextBlock)bt.FindName(bt.Name + "_TextBox")).Text = "my goal is to stay under $" + phonetb.Text;
+                bt.Visibility = System.Windows.Visibility.Visible;
+                MessageBox.Show("Ivan add goal here", "Your goal was to spend under " + phonetb.Text, MessageBoxButton.OK);
+            }
+        }
+
+        private void EditGoal_Click(object sender, RoutedEventArgs e)
+        {
+            Button bt = (Button)sender;
+            bt.Visibility = System.Windows.Visibility.Collapsed;
+            PhoneTextBox ptb = (PhoneTextBox)FindName(bt.Name.Replace("Edit", "Add"));
+            ptb.Visibility = System.Windows.Visibility.Visible;
         }
 
         private void HubTile_Tap(object sender, System.Windows.Input.GestureEventArgs e)

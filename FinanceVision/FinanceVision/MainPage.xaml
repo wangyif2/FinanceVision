@@ -60,6 +60,27 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
+                            <toolkit:HubTile Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                                         Margin="12,12,0,0"
+                                         Source="/Images/Personal_Icon_202.png"
+                                         Title="Personal"
+                                         Name ="Personal"
+                                         Notification="Personal&#x0d;&#x0a;Summary"
+                                         DisplayNotification="True"
+                                         GroupTag="AddEntry"
+                                         Tap="HubTile_Tap"
+                                         Size="Medium"
+                                         Hold="HubTile_Hold"/>
+                            <toolkit:HubTile Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2"
+                                         Margin="12,12,0,0"
+                                         Source="/Images/Food_Icon_202.png"
+                                         Name ="Food"
+                                         Title="Food"
+                                         Notification="Food&#x0d;&#x0a;Summary"
+                                         GroupTag="AddEntry"
+                                         Tap="HubTile_Tap"
+                                         Size="Medium"
+                                         Hold="HubTile_Hold"/>
                             <toolkit:HubTile Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
                                          Margin="12,12,0,0"
                                          Source="/Images/Fun_Icon_202.png"
@@ -83,25 +104,15 @@
                                          Hold="HubTile_Hold"/>
                             <toolkit:HubTile Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
                                          Margin="12,12,0,0"
-                                         Source="/Images/Personal_Icon_202.png"
-                                         Title="Personal"
-                                         Name ="Personal"
-                                         Notification="Personal&#x0d;&#x0a;Summary"
-                                         DisplayNotification="True"
+                                         Source="/Images/Bill_Icon_202.png"
+                                         Title="Bill"
+                                         Name="Bill"
+                                         Notification="Transportation&#x0d;&#x0a;Summary"
                                          GroupTag="AddEntry"
                                          Tap="HubTile_Tap"
                                          Size="Medium"
                                          Hold="HubTile_Hold"/>
-                            <toolkit:HubTile Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
-                                         Margin="12,12,0,0"
-                                         Source="/Images/Food_Icon_202.png"
-                                         Name ="Food"
-                                         Title="Food"
-                                         Notification="Food&#x0d;&#x0a;Summary"
-                                         GroupTag="AddEntry"
-                                         Tap="HubTile_Tap"
-                                         Size="Medium"
-                                         Hold="HubTile_Hold"/>
+
                         </Grid>
                     </ScrollViewer>
 
@@ -133,19 +144,32 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <StackPanel x:Name="WeekGoalStack">
+                        <StackPanel x:Name="WeekGoalStack" Margin="0,0,0,20">
                             <toolkit:PhoneTextBox x:Name="AddWeekGoal" Hint="my goal is to stay under..."
                                                   ActionIcon="/Images/add_light.png"
                                                   ActionIconTapped="AddGoal_Tapped"
                                                   InputScope="Number"/>
+                            <Button x:Name="EditWeekGoal" Visibility="Collapsed" BorderThickness="0" Click="EditGoal_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock x:Name="EditWeekGoal_TextBox" Text="My goal is to stay under " VerticalAlignment="Center"/>
+                                    <Image Source="Images/edit_dark.png" Margin="30,0" Height="40" Width="40" />
+                                </StackPanel>
+                            </Button>
                         </StackPanel>
-                        <phone:LongListSelector  Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,-12,0" ItemsSource="{Binding AllCategories}">
+                        <phone:LongListSelector  Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,-12,0" ItemsSource="{Binding AllReceiptEntries}">
                             <phone:LongListSelector.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Margin="0,0,0,17" Orientation ="Horizontal">
-                                        <Image MaxHeight="50" MinHeight="50" Source="{Binding EntryCategory.ImagePath}"></Image>
-                                        <TextBlock Text="{Binding EntryName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
-                                        <TextBlock Text="{Binding EntryPrice}" TextWrapping="Wrap" Margin="12,0,12,0" Style="{StaticResource PhoneTextLargeStyle}"/>
+                                    <StackPanel>
+                                        <StackPanel Margin="0,0,0,17" Orientation ="Horizontal">
+                                            <Image MaxHeight="50" MinHeight="50" Source="{Binding EntryCategory.ImagePath}"></Image>
+                                            <TextBlock Text="{Binding EntryName}" TextWrapping="Wrap" 
+                                                       Style="{StaticResource PhoneTextLargeStyle}"/>
+                                            <TextBlock Text="{Binding EntryPrice}" TextWrapping="Wrap" Margin="12,0,12,0" 
+                                                       Foreground="Red"
+                                                       Style="{StaticResource PhoneTextLargeStyle}"/>
+                                        </StackPanel>
+                                        <TextBlock Text="02.03" TextWrapping="Wrap" 
+                                                   Style="{StaticResource PhoneTextSmallStyle}"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </phone:LongListSelector.ItemTemplate>
@@ -161,21 +185,33 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <StackPanel x:Name="MonthGoalStack">
+                        <StackPanel x:Name="MonthGoalStack" Margin="0,0,0,20">
                             <toolkit:PhoneTextBox x:Name="AddMonthGoal" Hint="my goal is to stay under..."
                                                   ActionIcon="/Images/add_light.png"
                                                   ActionIconTapped="AddGoal_Tapped"
                                                   InputScope="Number"/>
+                            <Button x:Name="EditMonthGoal" Visibility="Collapsed" BorderThickness="0" Click="EditGoal_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock x:Name="EditMonthGoal_TextBox" Text="My goal is to stay under " VerticalAlignment="Center"/>
+                                    <Image Source="Images/edit_dark.png" Margin="30,0" Height="40" Width="40" />
+                                </StackPanel>
+                            </Button>
                         </StackPanel>
                         <!--Double line list with text wrapping-->
-                        <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding AllReceiptEntries}">
+                        <phone:LongListSelector Grid.Row="1" Margin="0,0,-12,0" ItemsSource="{Binding AllReceiptEntries}">
                             <phone:LongListSelector.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Margin="0,0,0,17" Orientation ="Horizontal">
-                                        <TextBlock Text="02.03" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
-                                        <Image MaxHeight="50" MinHeight="50" Source="{Binding EntryCategory.ImagePath}"></Image>
-                                        <TextBlock Text="{Binding EntryName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
-                                        <TextBlock Text="{Binding EntryPrice}" TextWrapping="Wrap" Margin="12,0,12,0" Style="{StaticResource PhoneTextLargeStyle}"/>
+                                    <StackPanel>
+                                        <StackPanel Margin="0,0,0,17" Orientation ="Horizontal">
+                                            <Image MaxHeight="50" MinHeight="50" Source="{Binding EntryCategory.ImagePath}"></Image>
+                                            <TextBlock Text="{Binding EntryName}" TextWrapping="Wrap" 
+                                                       Style="{StaticResource PhoneTextLargeStyle}"/>
+                                            <TextBlock Text="{Binding EntryPrice}" TextWrapping="Wrap" Margin="12,0,12,0" 
+                                                       Foreground="Red"
+                                                       Style="{StaticResource PhoneTextLargeStyle}"/>
+                                        </StackPanel>
+                                        <TextBlock Text="02.03" TextWrapping="Wrap" 
+                                                   Style="{StaticResource PhoneTextSmallStyle}"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </phone:LongListSelector.ItemTemplate>
