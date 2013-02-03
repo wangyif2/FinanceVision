@@ -67,6 +67,7 @@ namespace FinanceVision
         {
             await speechSynthesizer.SpeakTextAsync("Say the item name");
             this.recoWithUI = new SpeechRecognizerUI();
+            recoWithUI.Recognizer.Grammars.AddGrammarFromPredefinedType("webSearch", SpeechPredefinedGrammar.WebSearch);
             SpeechRecognitionUIResult recoResultName = await recoWithUI.RecognizeWithUIAsync();
             Name.Text = recoResultName.RecognitionResult.Text;
 
