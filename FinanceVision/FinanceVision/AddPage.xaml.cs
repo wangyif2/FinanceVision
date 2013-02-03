@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -74,7 +75,22 @@ namespace FinanceVision
             await speechSynthesizer.SpeakTextAsync("Say the item price");
             this.recoWithUI = new SpeechRecognizerUI();
             SpeechRecognitionUIResult recoResultPrice = await recoWithUI.RecognizeWithUIAsync();
-            Amount.Text = recoResultPrice.RecognitionResult.Text ?? "0";
+            Amount.Text = GetOnlyNumberFromSpeech(recoResultPrice);
+        }
+
+        private String GetOnlyNumberFromSpeech(SpeechRecognitionUIResult recoResultPrice)
+        {
+            String resultString = recoResultPrice.RecognitionResult.Text ?? "0";
+            try
+            {
+                Regex regexObj = new Regex(@"[^\d]");
+                resultString = regexObj.Replace(resultString, "");
+            }
+            catch (ArgumentException ex)
+            {
+                // Syntax error in the regular expression
+            }
+            return resultString;
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -90,15 +106,15 @@ namespace FinanceVision
             // Add entry to database with user input
             using (ReceiptDatabase db = new ReceiptDatabase(DBConnectionString))
             {
-                
+
                 // Prepopulate the categories.
                 db.entries.InsertOnSubmit(new ReceiptEntry
                     {
                         EntryName = Name.Text,
                         EntryPrice = float.Parse(Amount.Text),
-                        EntryCategory = (ReceiptEntry.ActivityCategory) Enum.ToObject(typeof(ReceiptEntry.ActivityCategory), CategoryPicker.SelectedIndex)//ReceiptEntry.Category.Food
+                        EntryCategory = (ReceiptEntry.ActivityCategory)Enum.ToObject(typeof(ReceiptEntry.ActivityCategory), CategoryPicker.SelectedIndex)//ReceiptEntry.Category.Food
                     });
-                
+
                 // Save categories to the database.
                 db.SubmitChanges();
             }
@@ -111,7 +127,7 @@ namespace FinanceVision
             InitializeComponent();
             BuildLocalizedApplicationBar();
 
-            if(selectedCategory != null)
+            if (selectedCategory != null)
                 CategoryPicker.SelectedItem = selectedCategory;
 
             if (e.TaskResult == TaskResult.OK)
@@ -150,8 +166,8 @@ namespace FinanceVision
 
                 //cam.Show();
             }
-            else if (e.NavigationMode == NavigationMode.Back && 
-                     photoChooserCanceled && 
+            else if (e.NavigationMode == NavigationMode.Back &&
+                     photoChooserCanceled &&
                      NavigationService.CanGoBack)
             {
                 NavigationService.GoBack();

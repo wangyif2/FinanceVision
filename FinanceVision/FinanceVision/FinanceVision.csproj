@@ -153,7 +153,16 @@
     <Content Include="Images\add.png" />
     <Content Include="Images\cancel.png" />
     <Content Include="Images\check.png" />
-    <Content Include="Images\Finance_Vision_Tile_Flip_Medium_1.png" />
+    <Content Include="Images\Finance_Vision_Tile_Flip_Medium.png" />
+    <Content Include="Images\sample1.jpg" />
+    <Content Include="Images\sample2.jpg" />
+    <Content Include="Images\sample3.jpg" />
+    <Content Include="Images\sample4.jpg" />
+    <Content Include="Images\sample5.jpg" />
+    <Content Include="Images\sample6.jpg" />
+    <Content Include="Images\sample7.jpg" />
+    <Content Include="Images\sample8.jpg" />
+    <Content Include="Images\sample9.jpg" />
     <Content Include="Libs\Microsoft.Phone.Controls.Toolkit.dll" />
     <Content Include="README_FIRST.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
