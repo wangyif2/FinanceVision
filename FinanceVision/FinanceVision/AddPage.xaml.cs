@@ -136,6 +136,10 @@ namespace FinanceVision
                     // Save categories to the database.
                     db.SubmitChanges();
                 }
+
+                // Load database update
+                MainPage.viewModel.LoadEntriesFromDatabase();
+
                 if (NavigationService.CanGoBack)
                     NavigationService.GoBack();
             }

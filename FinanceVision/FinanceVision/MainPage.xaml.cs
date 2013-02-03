@@ -19,7 +19,7 @@ namespace FinanceVision
 {
     public partial class MainPage : PhoneApplicationPage
     {
-
+        public static ReceiptViewModel viewModel;
         MediaLibrary library;
         SpeechRecognizerUI recoWithUI;
         SpeechSynthesizer speechSynthesizer = new SpeechSynthesizer();
@@ -66,11 +66,9 @@ namespace FinanceVision
         {
             NavigationService.Navigate(new Uri("/AddPage.xaml", UriKind.Relative));
         }
-
+        
         internal void LoadDatabase()
         {
-            ReceiptViewModel viewModel;
-
             // Load database and display
             string DBConnectionString = "Data Source=isostore:/ReceiptDatabase.sdf";
             viewModel = new ReceiptViewModel(DBConnectionString);
