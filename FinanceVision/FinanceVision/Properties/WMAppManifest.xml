@@ -2,7 +2,7 @@
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en-US" />
   <App xmlns="" ProductID="{a624cb7a-9e8d-401c-b4b5-260d1870cdc9}" Title="FinanceVision" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="FinanceVision author" Description="Sample description" Publisher="FinanceVision" PublisherID="{dc14e334-a0f2-4ca0-a4de-bc1c0a5eaf61}">
-    <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
+    <IconPath IsRelative="true" IsResource="false">Images\Finance_Vision_Tile_Flip_Medium.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_ISV_CAMERA" />
       <Capability Name="ID_CAP_MEDIALIB_PHOTO" />
@@ -15,9 +15,9 @@
     <Tokens>
       <PrimaryToken TokenID="FinanceVisionToken" TaskName="_default">
         <TemplateFlip>
-          <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileSmall.png</SmallImageURI>
+          <SmallImageURI IsRelative="true" IsResource="false">Images\Finance_Vision_Tile_Flip_Medium.png</SmallImageURI>
           <Count>0</Count>
-          <BackgroundImageURI IsRelative="true" IsResource="false">Assets\Tiles\FlipCycleTileMedium.png</BackgroundImageURI>
+          <BackgroundImageURI IsRelative="true" IsResource="false">Images\Finance_Vision_Tile_Flip_Medium.png</BackgroundImageURI>
           <Title>FinanceVision</Title>
           <BackContent>
           </BackContent>
