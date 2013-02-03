@@ -47,8 +47,10 @@
                 <!--Pivot item one-->
                 <phone:PivotItem Header="Add">
                     <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Hidden">
-                        <Grid Width="370" HorizontalAlignment="Left" Margin="0,0,0,12">
+                        <Grid Width="432" HorizontalAlignment="Left" Margin="0,0,0,12">
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
@@ -58,34 +60,7 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
-                            <toolkit:HubTile Grid.Row="1" Grid.Column="0" 
-                                         Margin="12,12,0,0"
-                                         Source="/Images/Personal_Icon_202.png"
-                                         Title="Personal"
-                                         Name ="Personal"
-                                         Notification="Personal&#x0d;&#x0a;Summary"
-                                         DisplayNotification="True"
-                                         GroupTag="AddEntry"
-                                         Tap="HubTile_Tap"
-                                         Hold="HubTile_Hold"/>
-                            <toolkit:HubTile Grid.Row="3" Grid.Column="0" 
-                                         Margin="12,12,0,0"
-                                         Source="/Images/Income_Icon_202.png"
-                                         Title="Income"
-                                         Name ="Income"
-                                         Notification="Income&#x0d;&#x0a;Summary"
-                                         Tap="HubTile_Tap"
-                                         Hold="HubTile_Hold"/>
-                            <toolkit:HubTile Grid.Row="1" Grid.Column="1" 
-                                         Margin="12,12,0,0"
-                                         Source="/Images/Food_Icon_202.png"
-                                         Name ="Food"
-                                         Title="Food"
-                                         Notification="Food&#x0d;&#x0a;Summary"
-                                         GroupTag="AddEntry"
-                                         Tap="HubTile_Tap"
-                                         Hold="HubTile_Hold"/>
-                            <toolkit:HubTile Grid.Row="2" Grid.Column="0" 
+                            <toolkit:HubTile Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
                                          Margin="12,12,0,0"
                                          Source="/Images/Fun_Icon_202.png"
                                          Title="Fun"
@@ -94,8 +69,9 @@
                                          DisplayNotification="True"
                                          GroupTag="AddEntry"
                                          Tap="HubTile_Tap"
+                                         Size="Medium"
                                          Hold="HubTile_Hold"/>
-                            <toolkit:HubTile Grid.Row="2" Grid.Column="1" 
+                            <toolkit:HubTile Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"
                                          Margin="12,12,0,0"
                                          Source="/Images/Transportation_Icon_202.png"
                                          Title="Transportation"
@@ -103,6 +79,28 @@
                                          Notification="Transportation&#x0d;&#x0a;Summary"
                                          GroupTag="AddEntry"
                                          Tap="HubTile_Tap"
+                                         Size="Medium"
+                                         Hold="HubTile_Hold"/>
+                            <toolkit:HubTile Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                                         Margin="12,12,0,0"
+                                         Source="/Images/Personal_Icon_202.png"
+                                         Title="Personal"
+                                         Name ="Personal"
+                                         Notification="Personal&#x0d;&#x0a;Summary"
+                                         DisplayNotification="True"
+                                         GroupTag="AddEntry"
+                                         Tap="HubTile_Tap"
+                                         Size="Medium"
+                                         Hold="HubTile_Hold"/>
+                            <toolkit:HubTile Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
+                                         Margin="12,12,0,0"
+                                         Source="/Images/Food_Icon_202.png"
+                                         Name ="Food"
+                                         Title="Food"
+                                         Notification="Food&#x0d;&#x0a;Summary"
+                                         GroupTag="AddEntry"
+                                         Tap="HubTile_Tap"
+                                         Size="Medium"
                                          Hold="HubTile_Hold"/>
                         </Grid>
                     </ScrollViewer>
@@ -126,35 +124,63 @@
                     </phone:LongListSelector>
                 </phone:PivotItem>
                 <phone:PivotItem Header="This Week">
-                    <!--Double line list with text wrapping-->
-                    <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding AllReceiptEntries}">
-                        <phone:LongListSelector.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Margin="0,0,0,17" Orientation ="Horizontal">
-                                    <TextBlock Text="02.03" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
-                                    <Image MaxHeight="50" MinHeight="50" Source="{Binding EntryCategory.ImagePath}"></Image>
-                                    <TextBlock Text="{Binding EntryName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
-                                    <TextBlock Text="{Binding EntryPrice}" TextWrapping="Wrap" Margin="12,0,12,0" Style="{StaticResource PhoneTextLargeStyle}"/>
-                                    
-                                </StackPanel>
-                            </DataTemplate>
-                        </phone:LongListSelector.ItemTemplate>
-                    </phone:LongListSelector>
+                    <Grid Margin="0,-20,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel x:Name="WeekGoalStack">
+                            <toolkit:PhoneTextBox x:Name="AddWeekGoal" Hint="my goal is to stay under..."
+                                                  ActionIcon="/Images/add_light.png"
+                                                  ActionIconTapped="AddGoal_Tapped"
+                                                  InputScope="Number"/>
+                        </StackPanel>
+                        <phone:LongListSelector Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,-12,0" ItemsSource="{Binding AllReceiptEntries}">
+                            <phone:LongListSelector.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="0,0,0,17" Orientation ="Horizontal">
+                                        <TextBlock Text="02.03" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
+                                        <Image MaxHeight="50" MinHeight="50" Source="{Binding EntryCategory.ImagePath}"></Image>
+                                        <TextBlock Text="{Binding EntryName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
+                                        <TextBlock Text="{Binding EntryPrice}" TextWrapping="Wrap" Margin="12,0,12,0" Style="{StaticResource PhoneTextLargeStyle}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </phone:LongListSelector.ItemTemplate>
+                        </phone:LongListSelector>
+                    </Grid>
                 </phone:PivotItem>
                 <phone:PivotItem Header="This Month">
-                    <!--Double line list with text wrapping-->
-                    <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding AllReceiptEntries}">
-                        <phone:LongListSelector.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Margin="0,0,0,17" Orientation ="Horizontal">
-                                    <TextBlock Text="02.03" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
-                                    <Image MaxHeight="50" MinHeight="50" Source="{Binding EntryCategory.ImagePath}"></Image>
-                                    <TextBlock Text="{Binding EntryName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
-                                    <TextBlock Text="{Binding EntryPrice}" TextWrapping="Wrap" Margin="12,0,12,0" Style="{StaticResource PhoneTextLargeStyle}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </phone:LongListSelector.ItemTemplate>
-                    </phone:LongListSelector>
+                    <Grid Margin="0,-20,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel x:Name="MonthGoalStack">
+                            <toolkit:PhoneTextBox x:Name="AddMonthGoal" Hint="my goal is to stay under..."
+                                                  ActionIcon="/Images/add_light.png"
+                                                  ActionIconTapped="AddGoal_Tapped"
+                                                  InputScope="Number"/>
+                        </StackPanel>
+                        <!--Double line list with text wrapping-->
+                        <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding AllReceiptEntries}">
+                            <phone:LongListSelector.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="0,0,0,17" Orientation ="Horizontal">
+                                        <TextBlock Text="02.03" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
+                                        <Image MaxHeight="50" MinHeight="50" Source="{Binding EntryCategory.ImagePath}"></Image>
+                                        <TextBlock Text="{Binding EntryName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
+                                        <TextBlock Text="{Binding EntryPrice}" TextWrapping="Wrap" Margin="12,0,12,0" Style="{StaticResource PhoneTextLargeStyle}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </phone:LongListSelector.ItemTemplate>
+                        </phone:LongListSelector>
+                    </Grid>
                 </phone:PivotItem>
             </phone:Pivot>
         </Grid>
