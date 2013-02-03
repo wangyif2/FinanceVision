@@ -117,7 +117,7 @@
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Margin="0,0,0,17" Orientation ="Horizontal">
-                                    <Image Source="{Binding EntryCategory.ImagePath}"></Image>
+                                    <Image MaxHeight="50" MinHeight="50" Source="{Binding EntryCategory.ImagePath}"></Image>
                                     <TextBlock Text="{Binding EntryName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
                                     <TextBlock Text="{Binding EntryPrice}" TextWrapping="Wrap" Margin="12,0,12,0" Style="{StaticResource PhoneTextLargeStyle}"/>
                                 </StackPanel>
@@ -132,7 +132,7 @@
                             <DataTemplate>
                                 <StackPanel Margin="0,0,0,17" Orientation ="Horizontal">
                                     <TextBlock Text="02.03" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
-                                    <Image Source="{Binding EntryCategory.ImagePath}"></Image>
+                                    <Image MaxHeight="50" MinHeight="50" Source="{Binding EntryCategory.ImagePath}"></Image>
                                     <TextBlock Text="{Binding EntryName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
                                     <TextBlock Text="{Binding EntryPrice}" TextWrapping="Wrap" Margin="12,0,12,0" Style="{StaticResource PhoneTextLargeStyle}"/>
                                     
@@ -148,7 +148,7 @@
                             <DataTemplate>
                                 <StackPanel Margin="0,0,0,17" Orientation ="Horizontal">
                                     <TextBlock Text="02.03" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
-                                    <Image Source="{Binding EntryCategory.ImagePath}"></Image>
+                                    <Image MaxHeight="50" MinHeight="50" Source="{Binding EntryCategory.ImagePath}"></Image>
                                     <TextBlock Text="{Binding EntryName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
                                     <TextBlock Text="{Binding EntryPrice}" TextWrapping="Wrap" Margin="12,0,12,0" Style="{StaticResource PhoneTextLargeStyle}"/>
                                 </StackPanel>
