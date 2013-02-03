@@ -164,11 +164,12 @@
                                             <TextBlock Text="{Binding EntryName}" TextWrapping="Wrap" 
                                                        Style="{StaticResource PhoneTextLargeStyle}"/>
                                             <TextBlock Text="{Binding EntryPrice}" TextWrapping="Wrap" Margin="12,0,12,0" 
-                                                       Foreground="Red"
+                                                       Foreground="Red" VerticalAlignment="Center"
                                                        Style="{StaticResource PhoneTextLargeStyle}"/>
                                         </StackPanel>
-                                        <TextBlock Text="02.03" TextWrapping="Wrap"
-                                                   Style="{StaticResource PhoneTextSmallStyle}"/>
+                                        <TextBlock Text="{Binding EntryDate}" TextWrapping="NoWrap" 
+                                                   Style="{StaticResource PhoneTextSmallStyle}" Width="78"
+                                                   HorizontalAlignment="Left"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </phone:LongListSelector.ItemTemplate>
@@ -200,17 +201,18 @@
                         <phone:LongListSelector Grid.Row="1" Margin="0,0,-12,0" ItemsSource="{Binding AllReceiptEntries}">
                             <phone:LongListSelector.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel>
-                                        <StackPanel Margin="0,0,0,17" Orientation ="Horizontal">
+                                    <StackPanel Margin="0,0,0,17" >
+                                        <StackPanel Orientation ="Horizontal">
                                             <Image MaxHeight="50" MinHeight="50" Source="{Binding EntryCategory.ImagePath}"></Image>
                                             <TextBlock Text="{Binding EntryName}" TextWrapping="Wrap" 
                                                        Style="{StaticResource PhoneTextLargeStyle}"/>
                                             <TextBlock Text="{Binding EntryPrice}" TextWrapping="Wrap" Margin="12,0,12,0" 
-                                                       Foreground="Red"
+                                                       Foreground="Red" VerticalAlignment="Center"
                                                        Style="{StaticResource PhoneTextLargeStyle}"/>
                                         </StackPanel>
-                                        <TextBlock Text="02.03" TextWrapping="Wrap" 
-                                                   Style="{StaticResource PhoneTextSmallStyle}"/>
+                                        <TextBlock Text="{Binding EntryDate}" TextWrapping="NoWrap" 
+                                                   Style="{StaticResource PhoneTextSmallStyle}" Width="78"
+                                                   HorizontalAlignment="Left"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </phone:LongListSelector.ItemTemplate>

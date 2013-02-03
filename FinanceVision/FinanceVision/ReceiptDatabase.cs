@@ -40,14 +40,14 @@ namespace FinanceVision
             }
         }
 
-        /*private DateTime _entryDate;
+        private string _entryDate;
 
         [Column]
         public string EntryDate
         {
-            get { return _entryDate.Date.ToString();  }
-            set { _entryDate = DateTime.Today;  }
-        }*/
+            get { return _entryDate;  }
+            set { _entryDate = value;  }
+        }
 
         private string _entryName;
 

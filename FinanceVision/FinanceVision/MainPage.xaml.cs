@@ -68,7 +68,7 @@ namespace FinanceVision
                 Button bt = (Button)FindName(phonetb.Name.Replace("Add", "Edit"));
                 ((TextBlock)bt.FindName(bt.Name + "_TextBox")).Text = "my goal is to stay under $" + phonetb.Text;
                 bt.Visibility = System.Windows.Visibility.Visible;
-                MessageBox.Show("Ivan add goal here", "Your goal was to spend under " + phonetb.Text, MessageBoxButton.OK);
+                //MessageBox.Show("Your goal was to spend under " + phonetb.Text, MessageBoxButton.OK);
             }
         }
 

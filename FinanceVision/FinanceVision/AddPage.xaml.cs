@@ -129,7 +129,8 @@ namespace FinanceVision
                         {
                             EntryName = Name.Text,
                             EntryPrice = float.Parse(Amount.Text),
-                            EntryCategory = new ActivityCategory { Name = CategoryPicker.SelectedItem.ToString() }
+                            EntryCategory = new ActivityCategory { Name = CategoryPicker.SelectedItem.ToString() },
+                            EntryDate = Date.Value.ToString()
                         });
 
                     // Save categories to the database.
