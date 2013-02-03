@@ -12,8 +12,7 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    shell:SystemTray.IsVisible="True"
-    toolkit:TiltEffect.IsTiltEnabled="True">
+    shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -40,7 +39,7 @@
             <!--Pivot Control-->
             <phone:Pivot Title="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}">
                 <!--Pivot item one-->
-                <phone:PivotItem Header="Add">
+                <phone:PivotItem Header="Add an Entry">
                     <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Hidden">
                         <Grid Width="370" HorizontalAlignment="Left" Margin="0,0,0,12">
                             <Grid.ColumnDefinitions>
@@ -86,9 +85,7 @@
                                          GroupTag="AddEntry"/>
                         </Grid>
                     </ScrollViewer>
-                    <Button>
-                        Speech
-                    </Button>
+
                 </phone:PivotItem>
                 <!--Pivot item twp-->
                 <phone:PivotItem Header="Summary">
