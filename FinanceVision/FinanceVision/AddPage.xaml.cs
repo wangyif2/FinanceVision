@@ -114,9 +114,17 @@ namespace FinanceVision
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+
+            string category = "";
             if (e.NavigationMode == NavigationMode.New)
             {
                 photoChooser.Show();
+                if (NavigationContext.QueryString.TryGetValue("category", out category))
+                {
+                    //do something with the parameter
+                    int x = 0;
+                }
+
                 //cam.Show();
             }
         }

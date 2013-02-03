@@ -62,7 +62,8 @@
                                          Title="Personal"
                                          Notification="Personal&#x0d;&#x0a;Summary"
                                          DisplayNotification="True"
-                                         GroupTag="AddEntry"/>
+                                         GroupTag="AddEntry"
+                                         Tap="HubTile_Tap"/>
                             <toolkit:HubTile Grid.Row="3" Grid.Column="0" 
                                          Margin="12,12,0,0"
                                          Source="/Images/SteakSandwich.jpg"

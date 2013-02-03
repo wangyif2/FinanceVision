@@ -77,5 +77,11 @@ namespace FinanceVision
             viewModel.LoadEntriesFromDatabase();
             DataContext = viewModel;
         }
+
+        private void HubTile_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/AddPage.xaml?category=personal", UriKind.Relative));
+
+        }
     }
 }
