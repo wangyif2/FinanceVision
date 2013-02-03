@@ -146,7 +146,7 @@ namespace FinanceVision
             if (e.TaskResult == TaskResult.OK)
             {
                 AddImageButton.Visibility = System.Windows.Visibility.Collapsed;
-                myImage.Visibility = System.Windows.Visibility.Visible;
+                ImageButton.Visibility = System.Windows.Visibility.Visible;
 
                 //Code to display the photo on the page in an image control named myImage.
                 System.Windows.Media.Imaging.BitmapImage bmp = new System.Windows.Media.Imaging.BitmapImage();
@@ -169,6 +169,11 @@ namespace FinanceVision
         private void AddImageButton_Click(object sender, RoutedEventArgs e)
         {
             photoChooser.Show();
+        }
+
+        private void DatePicker_ValueChanged(object sender, DateTimeValueChangedEventArgs e)
+        {
+            string datetime = e.NewDateTime.Value.ToShortDateString();
         }
 
     }
