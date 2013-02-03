@@ -57,7 +57,7 @@ namespace FinanceVision
             appBarButton_Cancel.Click += CancelButton_Click;
             ApplicationBar.Buttons.Add(appBarButton_Cancel);
 
-            ApplicationBarIconButton appBarButton_Speak = new ApplicationBarIconButton(new Uri("/Images/speech.png", UriKind.Relative));
+            ApplicationBarIconButton appBarButton_Speak = new ApplicationBarIconButton(new Uri("/Images/microphone.png", UriKind.Relative));
             appBarButton_Speak.Text = AppResources.AppBarButton_Speak;
             appBarButton_Speak.Click += SpeakButton_Click;
             ApplicationBar.Buttons.Add(appBarButton_Speak);

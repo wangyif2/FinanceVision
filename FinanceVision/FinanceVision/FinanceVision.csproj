@@ -156,15 +156,7 @@
     <Content Include="Images\cancel.png" />
     <Content Include="Images\check.png" />
     <Content Include="Images\Finance_Vision_Tile_Flip_Medium.png" />
-    <Content Include="Images\sample1.jpg" />
-    <Content Include="Images\sample2.jpg" />
-    <Content Include="Images\sample3.jpg" />
-    <Content Include="Images\sample4.jpg" />
-    <Content Include="Images\sample5.jpg" />
-    <Content Include="Images\sample6.jpg" />
-    <Content Include="Images\sample7.jpg" />
-    <Content Include="Images\sample8.jpg" />
-    <Content Include="Images\sample9.jpg" />
+    <Content Include="Images\microphone.png" />
     <Content Include="Libs\Microsoft.Hawaii.ClientBase.dll" />
     <Content Include="Libs\Microsoft.Hawaii.Ocr.Client.dll" />
     <Content Include="Libs\Microsoft.Phone.Controls.Toolkit.dll" />
