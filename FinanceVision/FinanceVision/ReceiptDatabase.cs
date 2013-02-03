@@ -146,8 +146,15 @@ namespace FinanceVision
             {
                 NotifyPropertyChanging("Name");
                 _name = value;
+                _imagePath = "/Images/" + value + "_Icon_202.png";
                 NotifyPropertyChanged("Name");
             }
+        }
+
+        private string _imagePath;
+        public string ImagePath
+        {
+            get { return _imagePath;  }
         }
 
         // Define the entity set for the collection side of the relationship.
