@@ -74,6 +74,31 @@ namespace FinanceVision
             }
         }
 
+        public enum ActivityCategory
+        {
+            Personal = 0,
+            Food = 1,
+            Entertainment = 2,
+            Transportation = 3,
+        }
+
+        private ActivityCategory _entryCategory;
+
+        [Column]
+        public ActivityCategory EntryCategory
+        {
+            get { return _entryCategory;  }
+            set
+            {
+                if (_entryCategory != value)
+                {
+                    NotifyPropertyChanging("EntryCategory");
+                    _entryCategory = value;
+                    NotifyPropertyChanged("EntryCategory");
+                }
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void NotifyPropertyChanged(string propertyName)
