@@ -44,7 +44,7 @@
             <!--Pivot Control-->
             <phone:Pivot Title="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}">
                 <!--Pivot item one-->
-                <phone:PivotItem Header="Add an Entry">
+                <phone:PivotItem Header="Add">
                     <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Hidden">
                         <Grid Width="370" HorizontalAlignment="Left" Margin="0,0,0,12">
                             <Grid.ColumnDefinitions>
