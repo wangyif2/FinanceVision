@@ -59,50 +59,50 @@
                             </Grid.RowDefinitions>
                             <toolkit:HubTile Grid.Row="1" Grid.Column="0" 
                                          Margin="12,12,0,0"
-                                         Source="/Images/Dessert.jpg"
+                                         Source="/Images/Personal_Icon_202.png"
                                          Title="Personal"
-                                             Name ="Personal"
+                                         Name ="Personal"
                                          Notification="Personal&#x0d;&#x0a;Summary"
                                          DisplayNotification="True"
                                          GroupTag="AddEntry"
                                          Tap="HubTile_Tap"
-                                             Hold="UIElement_OnHold_Personal"/>
+                                         Hold="UIElement_OnHold_Personal"/>
                             <toolkit:HubTile Grid.Row="3" Grid.Column="0" 
                                          Margin="12,12,0,0"
-                                         Source="/Images/SteakSandwich.jpg"
+                                         Source="/Images/Income_Icon_202.png"
                                          Title="Income"
-                                             Name ="Income"
+                                         Name ="Income"
                                          Notification="Income&#x0d;&#x0a;Summary"
                                          Tap="HubTile_Tap"
-                                             Hold="UIElement_OnHold_Income"/>
+                                         Hold="UIElement_OnHold_Income"/>
                             <toolkit:HubTile Grid.Row="1" Grid.Column="1" 
                                          Margin="12,12,0,0"
-                                         Source="/Images/Fruits.jpg"
-                                             Name ="Food"
-                                             Title="Food"
+                                         Source="/Images/Food_Icon_202.png"
+                                         Name ="Food"
+                                         Title="Food"
                                          Notification="Food&#x0d;&#x0a;Summary"
                                          GroupTag="AddEntry"
                                          Tap="HubTile_Tap"
-                                             Hold="UIElement_OnHold_Food"/>
+                                         Hold="UIElement_OnHold_Food"/>
                             <toolkit:HubTile Grid.Row="2" Grid.Column="0" 
                                          Margin="12,12,0,0"
-                                         Source="/Images/Pretzel.jpg"
+                                         Source="/Images/Fun_Icon_202.png"
                                          Title="Fun"
-                                             Name="Fun"
+                                         Name="Fun"
                                          Notification="Fun&#x0d;&#x0a;Summary"
                                          DisplayNotification="True"
                                          GroupTag="AddEntry"
                                          Tap="HubTile_Tap"
-                                             Hold="UIElement_OnHold_Fun"/>
+                                         Hold="UIElement_OnHold_Fun"/>
                             <toolkit:HubTile Grid.Row="2" Grid.Column="1" 
                                          Margin="12,12,0,0"
-                                         Source="/Images/Shrimp.jpg"
+                                         Source="/Images/Transportation_Icon_202.png"
                                          Title="Transportation"
-                                             Name="Transportation"
+                                         Name="Transportation"
                                          Notification="Transportation&#x0d;&#x0a;Summary"
                                          GroupTag="AddEntry"
                                          Tap="HubTile_Tap"
-                                             Hold="UIElement_OnHold_Transportation"/>
+                                          Hold="UIElement_OnHold_Transportation"/>
                         </Grid>
                     </ScrollViewer>
 
