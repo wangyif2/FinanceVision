@@ -69,12 +69,12 @@ namespace FinanceVision
             this.recoWithUI = new SpeechRecognizerUI();
             recoWithUI.Recognizer.Grammars.AddGrammarFromPredefinedType("webSearch", SpeechPredefinedGrammar.WebSearch);
             SpeechRecognitionUIResult recoResultName = await recoWithUI.RecognizeWithUIAsync();
-            Name.Text = recoResultName.RecognitionResult.Text;
+            Name.Text = recoResultName.RecognitionResult.Text ?? "Unknown";
 
             await speechSynthesizer.SpeakTextAsync("Say the item price");
             this.recoWithUI = new SpeechRecognizerUI();
             SpeechRecognitionUIResult recoResultPrice = await recoWithUI.RecognizeWithUIAsync();
-            Amount.Text = recoResultPrice.RecognitionResult.Text;
+            Amount.Text = recoResultPrice.RecognitionResult.Text ?? "0";
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
