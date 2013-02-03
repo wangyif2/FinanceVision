@@ -85,6 +85,9 @@
                                          GroupTag="AddEntry"/>
                         </Grid>
                     </ScrollViewer>
+                    <Button>
+                        Speech
+                    </Button>
                 </phone:PivotItem>
                 <!--Pivot item twp-->
                 <phone:PivotItem Header="Summary">
