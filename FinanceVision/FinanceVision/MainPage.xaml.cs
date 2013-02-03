@@ -13,6 +13,7 @@ using System.IO;
 using System.Windows.Media.Imaging;
 using Windows.Phone.Speech.Recognition;
 using Windows.Phone.Speech.Synthesis;
+using GestureEventArgs = System.Windows.Input.GestureEventArgs;
 
 namespace FinanceVision
 {
@@ -53,7 +54,7 @@ namespace FinanceVision
             this.recoWithUI = new SpeechRecognizerUI();
 
             // Start recognition (load the dictation grammar by default).
-//            await speechSynthesizer.SpeakTextAsync("");
+            //            await speechSynthesizer.SpeakTextAsync("");
 
             SpeechRecognitionUIResult recoResult = await recoWithUI.RecognizeWithUIAsync();
 
@@ -82,6 +83,59 @@ namespace FinanceVision
             HubTile ht = (HubTile)sender;
             NavigationService.Navigate(new Uri("/AddPage.xaml?category=" + ht.Title, UriKind.Relative));
 
+        }
+
+
+
+        private void CreateLiveTile(HubTile hubtile)
+        {
+
+            StandardTileData LiveTile = new StandardTileData
+                {
+                    BackgroundImage = ((System.Windows.Media.Imaging.BitmapImage)hubtile.Source).UriSource,
+                    Title = hubtile.Title,
+                    BackTitle = hubtile.Title,
+                    BackContent = hubtile.Message
+                };
+            ShellTile Tile = ShellTile.ActiveTiles.FirstOrDefault(x => x.NavigationUri.ToString().Contains("DefaultTitle=" + LiveTile.Title));
+            if (Tile == null)
+            {
+                try
+                {
+                    ShellTile.Create(new Uri("/MainPage.xaml?DefaultTitle=" + LiveTile.Title, UriKind.Relative), LiveTile);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("I prefer not to be pinned");
+                }
+            }
+            else MessageBox.Show("The tile is already pinned");
+
+        }
+
+        private void UIElement_OnHold_Personal(object sender, GestureEventArgs e)
+        {
+            CreateLiveTile(Personal);
+        }
+
+        private void UIElement_OnHold_Income(object sender, GestureEventArgs e)
+        {
+            CreateLiveTile(Income);
+        }
+
+        private void UIElement_OnHold_Food(object sender, GestureEventArgs e)
+        {
+            CreateLiveTile(Food);
+        }
+
+        private void UIElement_OnHold_Fun(object sender, GestureEventArgs e)
+        {
+            CreateLiveTile(Fun);
+        }
+
+        private void UIElement_OnHold_Transportation(object sender, GestureEventArgs e)
+        {
+            CreateLiveTile(Transportation);
         }
     }
 }

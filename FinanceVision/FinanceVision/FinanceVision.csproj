@@ -155,8 +155,8 @@
     <Content Include="Images\check.png" />
     <Content Include="Images\Finance_Vision_Tile_Flip_Medium_1.png" />
     <Content Include="Images\microphone.png" />
-    <Content Include="Images\save.png" />
-    <Content Include="Libs\Microsoft.Phone.Controls.Toolkit.dll" />
+	<Content Include="Images\save.png" />
+<Content Include="Libs\Microsoft.Phone.Controls.Toolkit.dll" />
     <Content Include="README_FIRST.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
