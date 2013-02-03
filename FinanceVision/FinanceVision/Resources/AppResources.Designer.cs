@@ -88,6 +88,15 @@ namespace FinanceVision.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Speak.
+        /// </summary>
+        public static string AppBarButton_Speak {
+            get {
+                return ResourceManager.GetString("AppBarButton_Speak", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DevSetup.
         /// </summary>
         public static string AppBarMenu_DevSetup {

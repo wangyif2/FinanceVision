@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Media;
 using System.IO;
 using System.Windows.Media.Imaging;
 using Windows.Phone.Speech.Recognition;
+using Windows.Phone.Speech.Synthesis;
 
 namespace FinanceVision
 {
@@ -20,6 +21,7 @@ namespace FinanceVision
 
         MediaLibrary library;
         SpeechRecognizerUI recoWithUI;
+        SpeechSynthesizer speechSynthesizer = new SpeechSynthesizer();
         // Constructor
         public MainPage()
         {
@@ -60,6 +62,8 @@ namespace FinanceVision
             this.recoWithUI = new SpeechRecognizerUI();
 
             // Start recognition (load the dictation grammar by default).
+//            await speechSynthesizer.SpeakTextAsync("");
+
             SpeechRecognitionUIResult recoResult = await recoWithUI.RecognizeWithUIAsync();
 
             // Do something with the recognition result.

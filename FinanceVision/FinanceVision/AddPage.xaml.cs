@@ -9,13 +9,17 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Microsoft.Phone.Tasks;
 using FinanceVision.Resources;
+using Windows.Phone.Speech.Recognition;
+using Windows.Phone.Speech.Synthesis;
 
 namespace FinanceVision
 {
     public partial class AddPage : PhoneApplicationPage
     {
         //private CameraCaptureTask cam;
-        private PhotoChooserTask photoChooser; 
+        private PhotoChooserTask photoChooser;
+        private SpeechRecognizerUI recoWithUI;
+        private SpeechSynthesizer speechSynthesizer;
 
         public AddPage()
         {
@@ -47,6 +51,24 @@ namespace FinanceVision
             appBarButton_Cancel.Text = AppResources.AppBarButton_Confirm;
             appBarButton_Cancel.Click += CancelButton_Click;
             ApplicationBar.Buttons.Add(appBarButton_Cancel);
+
+            ApplicationBarIconButton appBarButton_Speak = new ApplicationBarIconButton(new Uri("/Images/speech.png", UriKind.Relative));
+            appBarButton_Speak.Text = AppResources.AppBarButton_Speak;
+            appBarButton_Speak.Click += SpeakButton_Click;
+            ApplicationBar.Buttons.Add(appBarButton_Speak);
+        }
+
+        private async void SpeakButton_Click(object sender, EventArgs e)
+        {
+            await speechSynthesizer.SpeakTextAsync("Say the time name");
+            this.recoWithUI = new SpeechRecognizerUI();
+            SpeechRecognitionUIResult recoResultName = await recoWithUI.RecognizeWithUIAsync();
+            Name.Text = recoResultName.RecognitionResult.ToString();
+
+            await speechSynthesizer.SpeakTextAsync("Say the item price");
+            this.recoWithUI = new SpeechRecognizerUI();
+            SpeechRecognitionUIResult recoResultPrice = await recoWithUI.RecognizeWithUIAsync();
+            Amount.Text = recoResultPrice.RecognitionResult.ToString();
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
