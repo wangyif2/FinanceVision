@@ -104,7 +104,7 @@ namespace FinanceVision
             if (!string.IsNullOrEmpty(Name.Text) || !string.IsNullOrEmpty(Amount.Text))
             {
                 MessageBoxResult result = MessageBox.Show("Are you sure...?", "", MessageBoxButton.OKCancel);
-                if(result == MessageBoxResult.OK)
+                if(result == MessageBoxResult.OK && NavigationService.CanGoBack)
                     NavigationService.GoBack();
             }
         }
@@ -136,7 +136,8 @@ namespace FinanceVision
                     // Save categories to the database.
                     db.SubmitChanges();
                 }
-                NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+                if (NavigationService.CanGoBack)
+                    NavigationService.GoBack();
             }
         }
 
