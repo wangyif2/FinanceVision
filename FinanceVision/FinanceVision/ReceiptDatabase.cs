@@ -40,6 +40,15 @@ namespace FinanceVision
             }
         }
 
+        /*private DateTime _entryDate;
+
+        [Column]
+        public string EntryDate
+        {
+            get { return _entryDate.Date.ToString();  }
+            set { _entryDate = DateTime.Today;  }
+        }*/
+
         private string _entryName;
 
         [Column]
@@ -52,6 +61,7 @@ namespace FinanceVision
                 {
                     NotifyPropertyChanging("EntryName");
                     _entryName = value;
+                    //_entryDate = DateTime.Today;
                     NotifyPropertyChanged("EntryName");
 
                 }
@@ -146,7 +156,7 @@ namespace FinanceVision
             {
                 NotifyPropertyChanging("Name");
                 _name = value;
-                _imagePath = "/Images/" + value + "_Icon_202.png";
+                _imagePath = "/Images/" + value + "_Icon_202_white.png";
                 NotifyPropertyChanged("Name");
             }
         }
