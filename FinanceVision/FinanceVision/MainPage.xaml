@@ -116,7 +116,7 @@
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Margin="0,0,0,17" Orientation ="Horizontal">
-                                    <toolkit:ExpanderView Header="{Binding Name}"  x:Name="expander" Margin="0,0,0,5">
+                                    <toolkit:ExpanderView Header="{Binding Name}" FontSize="45" x:Name="expander" Margin="0,0,0,5">
                                         <!--Double line list with text wrapping-->
                                         <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding AllReceiptEntries}">
                                             <phone:LongListSelector.ItemTemplate>
