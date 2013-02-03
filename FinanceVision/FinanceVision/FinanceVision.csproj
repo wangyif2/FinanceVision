@@ -161,6 +161,7 @@
     <Content Include="Images\sample6.jpg" />
     <Content Include="Images\sample7.jpg" />
     <Content Include="Images\sample8.jpg" />
+    <Content Include="Images\sample9.jpg" />
     <Content Include="Libs\Microsoft.Hawaii.ClientBase.dll" />
     <Content Include="Libs\Microsoft.Hawaii.Ocr.Client.dll" />
     <Content Include="README_FIRST.txt" />
@@ -178,8 +179,9 @@
   <ItemGroup>
     <Reference Include="Microsoft.Hawaii.ClientBase, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Hawaii.Ocr.Client, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Phone.Controls.Toolkit">
-      <HintPath>..\packages\WPtoolkit.4.2012.10.30\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Visual Studio 2012\Samples\wp_toolkit\Bin\WP8\Debug\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup />
