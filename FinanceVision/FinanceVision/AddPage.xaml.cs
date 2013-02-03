@@ -35,7 +35,6 @@ namespace FinanceVision
             photoChooser.Completed += photoChooser_Completed;
 
             speechSynthesizer = new SpeechSynthesizer();
-            SpeakButton_Click(null, null);
         }
 
         // Code for building a localized ApplicationBar

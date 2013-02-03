@@ -20,7 +20,6 @@ namespace FinanceVision
     public partial class MainPage : PhoneApplicationPage
     {
         public static ReceiptViewModel viewModel;
-        MediaLibrary library;
         SpeechRecognizerUI recoWithUI;
         SpeechSynthesizer speechSynthesizer = new SpeechSynthesizer();
         // Constructor
@@ -50,7 +49,7 @@ namespace FinanceVision
         {
             throw new NotImplementedException();
         }
-        
+
         internal void LoadDatabase()
         {
             // Load database and display
@@ -58,6 +57,12 @@ namespace FinanceVision
             viewModel = new ReceiptViewModel(DBConnectionString);
             viewModel.LoadEntriesFromDatabase();
             DataContext = viewModel;
+        }
+
+        private void AddGoal_Tapped(object sender, EventArgs e)
+        {
+            PhoneTextBox phonetb = (PhoneTextBox)sender;
+            MessageBox.Show("Ivan add goal here", "Your goal was to spend under " + phonetb.Text, MessageBoxButton.OK);
         }
 
         private void HubTile_Tap(object sender, System.Windows.Input.GestureEventArgs e)
