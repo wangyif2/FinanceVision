@@ -43,7 +43,55 @@
             <!--Pivot Control-->
             <phone:Pivot Title="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}">
                 <!--Pivot item one-->
-                <phone:PivotItem Header="first">
+                <phone:PivotItem Header="Add an Entry">
+                    <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                        <Grid Width="370" HorizontalAlignment="Left" Margin="0,0,0,12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <toolkit:HubTile Grid.Row="1" Grid.Column="0" 
+                                         Margin="12,12,0,0"
+                                         Source="/Images/Dessert.jpg"
+                                         Title="Personal"
+                                         Notification="Personal&#x0d;&#x0a;Summary"
+                                         DisplayNotification="True"
+                                         GroupTag="AddEntry"/>
+                            <toolkit:HubTile Grid.Row="3" Grid.Column="0" 
+                                         Margin="12,12,0,0"
+                                         Source="/Images/SteakSandwich.jpg"
+                                         Title="Income"
+                                         Notification="Income&#x0d;&#x0a;Summary"/>
+                            <toolkit:HubTile Grid.Row="1" Grid.Column="1" 
+                                         Margin="12,12,0,0"
+                                         Source="/Images/Fruits.jpg"
+                                         Title="Food"
+                                         Notification="Food&#x0d;&#x0a;Summary"
+                                         GroupTag="AddEntry"/>
+                            <toolkit:HubTile Grid.Row="2" Grid.Column="0" 
+                                         Margin="12,12,0,0"
+                                         Source="/Images/Pretzel.jpg"
+                                         Title="Fun"
+                                         Notification="Fun&#x0d;&#x0a;Summary"
+                                         DisplayNotification="True"
+                                         GroupTag="AddEntry"/>
+                            <toolkit:HubTile Grid.Row="2" Grid.Column="1" 
+                                         Margin="12,12,0,0"
+                                         Source="/Images/Shrimp.jpg"
+                                         Title="Transportation"
+                                         Notification="Transportation&#x0d;&#x0a;Summary"
+                                         GroupTag="AddEntry"/>
+                        </Grid>
+                    </ScrollViewer>
+                </phone:PivotItem>
+                <!--Pivot item twp-->
+                <phone:PivotItem Header="Summary">
                     <!--Double line list with text wrapping-->
                     <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding AllReceiptEntries}">
                         <phone:LongListSelector.ItemTemplate>
@@ -53,20 +101,6 @@
                                     <TextBlock Text="{Binding EntryName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
                                     <TextBlock Text="{Binding EntryCategory}" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
                                     <TextBlock Text="{Binding EntryPrice}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </phone:LongListSelector.ItemTemplate>
-                    </phone:LongListSelector>
-                </phone:PivotItem>
-                <!--Pivot item twp-->
-                <phone:PivotItem Header="two">
-                    <!--Double line list with text wrapping-->
-                    <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding Items}">
-                        <phone:LongListSelector.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Margin="0,0,0,17">
-                                    <TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                                    <TextBlock Text="{Binding LineTwo}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>
