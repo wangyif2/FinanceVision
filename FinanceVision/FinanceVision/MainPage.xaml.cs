@@ -52,7 +52,7 @@ namespace FinanceVision
         // This should be removed before publishing 
         void AppBarMenu_DevSetup_Click(object sender, EventArgs e)
         {
-            for (int i = 1; i < 9; i++)
+            for (int i = 1; i < 10; i++)
             {
                 string filename = "Sample" + i + ".jpg";
                 string filelocation = "Images/sample" + i + ".jpg";
