@@ -155,6 +155,10 @@
     <Content Include="Images\check.png" />
     <Content Include="Images\Finance_Vision_Tile_Flip_Medium_1.png" />
     <Content Include="Images\microphone.png" />
+<<<<<<< HEAD
+=======
+    <Content Include="Images\save.png" />
+>>>>>>> ff8641b1b75bfb9d7b2d281c262500ac083569cf
     <Content Include="Libs\Microsoft.Phone.Controls.Toolkit.dll" />
     <Content Include="README_FIRST.txt" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />

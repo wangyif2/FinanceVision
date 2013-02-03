@@ -17,19 +17,15 @@ namespace FinanceVision
 {
     public partial class AddPage : PhoneApplicationPage
     {
-        //private CameraCaptureTask cam;
         private PhotoChooserTask photoChooser;
         private SpeechRecognizerUI recoWithUI;
         private SpeechSynthesizer speechSynthesizer;
 
-        private bool photoChooserCanceled = false;
-        private string selectedCategory;
-
         public AddPage()
         {
             //See photoChooser_Completed for reason why this is commented out
-            //InitializeComponent();
-            //BuildLocalizedApplicationBar();
+            InitializeComponent();
+            BuildLocalizedApplicationBar();
 
             //cam = new CameraCaptureTask();
             //cam.Completed += cam_Completed;
@@ -48,7 +44,7 @@ namespace FinanceVision
             ApplicationBar = new ApplicationBar();
 
             // Create a new button and set the text value to the localized string from AppResources.
-            ApplicationBarIconButton appBarButton_Confirm = new ApplicationBarIconButton(new Uri("/Images/check.png", UriKind.Relative));
+            ApplicationBarIconButton appBarButton_Confirm = new ApplicationBarIconButton(new Uri("/Images/save.png", UriKind.Relative));
             appBarButton_Confirm.Text = AppResources.AppBarButton_Confirm;
             appBarButton_Confirm.Click += ConfirmButton_Click;
             ApplicationBar.Buttons.Add(appBarButton_Confirm);
@@ -70,7 +66,7 @@ namespace FinanceVision
             this.recoWithUI = new SpeechRecognizerUI();
             recoWithUI.Recognizer.Grammars.AddGrammarFromPredefinedType("webSearch", SpeechPredefinedGrammar.WebSearch);
             SpeechRecognitionUIResult recoResultName = await recoWithUI.RecognizeWithUIAsync();
-            Name.Text = recoResultName.RecognitionResult.Text ?? "Unknown";
+            Name.Text = recoResultName.ResultStatus == SpeechRecognitionUIStatus.Succeeded ? recoResultName.RecognitionResult.Text : "Unknown";
 
             await speechSynthesizer.SpeakTextAsync("Say the item price");
             this.recoWithUI = new SpeechRecognizerUI();
@@ -80,7 +76,7 @@ namespace FinanceVision
 
         private String GetOnlyNumberFromSpeech(SpeechRecognitionUIResult recoResultPrice)
         {
-            String resultString = recoResultPrice.RecognitionResult.Text ?? "0";
+            String resultString = recoResultPrice.ResultStatus == SpeechRecognitionUIStatus.Succeeded ? recoResultPrice.RecognitionResult.Text : "0";
             try
             {
                 Regex regexObj = new Regex(@"[^\d]");
@@ -95,7 +91,7 @@ namespace FinanceVision
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Ivan Please Add Stuff Here");
+            NavigationService.GoBack();
         }
 
         private void ConfirmButton_Click(object sender, EventArgs e)
@@ -108,38 +104,28 @@ namespace FinanceVision
             {
 
                 // Prepopulate the categories.
+
                 db.entries.InsertOnSubmit(new ReceiptEntry
                     {
                         EntryName = Name.Text,
                         EntryPrice = float.Parse(Amount.Text),
-                        EntryCategory = (ReceiptEntry.ActivityCategory)Enum.ToObject(typeof(ReceiptEntry.ActivityCategory), CategoryPicker.SelectedIndex)//ReceiptEntry.Category.Food
+                        EntryCategory = new ActivityCategory {Name = CategoryPicker.SelectedItem.ToString()}
                     });
 
                 // Save categories to the database.
                 db.SubmitChanges();
             }
+            NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
         }
 
         void photoChooser_Completed(object sender, PhotoResult e)
         {
-            //This is here to create the illusion of navigating to camera first 
-            //then second page 
-            InitializeComponent();
-            BuildLocalizedApplicationBar();
-
-            if (selectedCategory != null)
-                CategoryPicker.SelectedItem = selectedCategory;
-
             if (e.TaskResult == TaskResult.OK)
             {
                 //Code to display the photo on the page in an image control named myImage.
                 System.Windows.Media.Imaging.BitmapImage bmp = new System.Windows.Media.Imaging.BitmapImage();
                 bmp.SetSource(e.ChosenPhoto);
                 myImage.Source = bmp;
-            }
-            else if (e.TaskResult == TaskResult.Cancel)
-            {
-                photoChooserCanceled = true;
             }
         }
 
@@ -159,18 +145,10 @@ namespace FinanceVision
         {
             base.OnNavigatedTo(e);
 
-            if (e.NavigationMode == NavigationMode.New)
+            string selectedCategory;
+            if (NavigationContext.QueryString.TryGetValue("category", out selectedCategory))
             {
-                photoChooser.Show();
-                NavigationContext.QueryString.TryGetValue("category", out selectedCategory);
-
-                //cam.Show();
-            }
-            else if (e.NavigationMode == NavigationMode.Back &&
-                     photoChooserCanceled &&
-                     NavigationService.CanGoBack)
-            {
-                NavigationService.GoBack();
+                CategoryPicker.SelectedItem = selectedCategory;
             }
         }
 
