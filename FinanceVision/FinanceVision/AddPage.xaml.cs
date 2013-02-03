@@ -62,16 +62,25 @@ namespace FinanceVision
 
         private async void SpeakButton_Click(object sender, EventArgs e)
         {
-            await speechSynthesizer.SpeakTextAsync("Say the item name");
-            this.recoWithUI = new SpeechRecognizerUI();
-            recoWithUI.Recognizer.Grammars.AddGrammarFromPredefinedType("webSearch", SpeechPredefinedGrammar.WebSearch);
-            SpeechRecognitionUIResult recoResultName = await recoWithUI.RecognizeWithUIAsync();
-            Name.Text = recoResultName.ResultStatus == SpeechRecognitionUIStatus.Succeeded ? recoResultName.RecognitionResult.Text : "Unknown";
+            try
+            {
+                await speechSynthesizer.SpeakTextAsync("Say the item name");
+                this.recoWithUI = new SpeechRecognizerUI();
+                recoWithUI.Recognizer.Grammars.AddGrammarFromPredefinedType("webSearch", SpeechPredefinedGrammar.WebSearch);
+                SpeechRecognitionUIResult recoResultName = await recoWithUI.RecognizeWithUIAsync();
+                Name.Text = recoResultName.ResultStatus == SpeechRecognitionUIStatus.Succeeded ? recoResultName.RecognitionResult.Text : "Unknown";
 
-            await speechSynthesizer.SpeakTextAsync("Say the item price");
-            this.recoWithUI = new SpeechRecognizerUI();
-            SpeechRecognitionUIResult recoResultPrice = await recoWithUI.RecognizeWithUIAsync();
-            Amount.Text = GetOnlyNumberFromSpeech(recoResultPrice);
+                if (recoResultName.ResultStatus != SpeechRecognitionUIStatus.Cancelled)
+                {
+                    await speechSynthesizer.SpeakTextAsync("Say the item price");
+                    this.recoWithUI = new SpeechRecognizerUI();
+                    SpeechRecognitionUIResult recoResultPrice = await recoWithUI.RecognizeWithUIAsync();
+                    Amount.Text = GetOnlyNumberFromSpeech(recoResultPrice);
+                }
+            }
+            catch
+            {
+            }
         }
 
         private String GetOnlyNumberFromSpeech(SpeechRecognitionUIResult recoResultPrice)
