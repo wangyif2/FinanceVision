@@ -102,7 +102,7 @@ namespace FinanceVision
             {
                 try
                 {
-                    ShellTile.Create(new Uri("/MainPage.xaml?DefaultTitle=" + LiveTile.Title, UriKind.Relative), LiveTile);
+                    ShellTile.Create(new Uri("/AddPage.xaml?category=" + hubtile.Title, UriKind.Relative), LiveTile);
                 }
                 catch (Exception)
                 {
