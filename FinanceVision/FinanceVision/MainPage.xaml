@@ -60,6 +60,27 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
+                            <toolkit:HubTile Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                                         Margin="12,12,0,0"
+                                         Source="/Images/Personal_Icon_202.png"
+                                         Title="Personal"
+                                         Name ="Personal"
+                                         Notification="Personal&#x0d;&#x0a;Summary"
+                                         DisplayNotification="True"
+                                         GroupTag="AddEntry"
+                                         Tap="HubTile_Tap"
+                                         Size="Medium"
+                                         Hold="HubTile_Hold"/>
+                            <toolkit:HubTile Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2"
+                                         Margin="12,12,0,0"
+                                         Source="/Images/Food_Icon_202.png"
+                                         Name ="Food"
+                                         Title="Food"
+                                         Notification="Food&#x0d;&#x0a;Summary"
+                                         GroupTag="AddEntry"
+                                         Tap="HubTile_Tap"
+                                         Size="Medium"
+                                         Hold="HubTile_Hold"/>
                             <toolkit:HubTile Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
                                          Margin="12,12,0,0"
                                          Source="/Images/Fun_Icon_202.png"
@@ -83,25 +104,15 @@
                                          Hold="HubTile_Hold"/>
                             <toolkit:HubTile Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
                                          Margin="12,12,0,0"
-                                         Source="/Images/Personal_Icon_202.png"
-                                         Title="Personal"
-                                         Name ="Personal"
-                                         Notification="Personal&#x0d;&#x0a;Summary"
-                                         DisplayNotification="True"
+                                         Source="/Images/Bill_Icon_202.png"
+                                         Title="Bill"
+                                         Name="Bill"
+                                         Notification="Transportation&#x0d;&#x0a;Summary"
                                          GroupTag="AddEntry"
                                          Tap="HubTile_Tap"
                                          Size="Medium"
                                          Hold="HubTile_Hold"/>
-                            <toolkit:HubTile Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
-                                         Margin="12,12,0,0"
-                                         Source="/Images/Food_Icon_202.png"
-                                         Name ="Food"
-                                         Title="Food"
-                                         Notification="Food&#x0d;&#x0a;Summary"
-                                         GroupTag="AddEntry"
-                                         Tap="HubTile_Tap"
-                                         Size="Medium"
-                                         Hold="HubTile_Hold"/>
+
                         </Grid>
                     </ScrollViewer>
 
