@@ -103,10 +103,10 @@
                     <phone:LongListSelector Margin="0,0,-12,0" ItemsSource="{Binding AllReceiptEntries}">
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Margin="0,0,0,17">
-                                    <TextBlock Text="{Binding EntryName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                                    <TextBlock Text="{Binding EntryCategory.Name}" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                                    <TextBlock Text="{Binding EntryPrice}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                <StackPanel Margin="0,0,0,17" Orientation ="Horizontal" Grid.RowSpan="1" Grid.ColumnSpan="3">
+                                    <TextBlock Text="{Binding EntryCategory.Name}" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
+                                    <TextBlock Text="{Binding EntryName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextLargeStyle}"/>
+                                    <TextBlock Text="{Binding EntryPrice}" TextWrapping="Wrap" Margin="12,0,12,0" Style="{StaticResource PhoneTextLargeStyle}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>
@@ -118,9 +118,9 @@
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Margin="0,0,0,17">
-                                    <TextBlock Text="{Binding EntryId}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                                    <TextBlock Text="{Binding EntryName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}"/>
-                                    <TextBlock Text="{Binding EntryPrice}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                    <TextBlock Text="{Binding EntryId}" TextWrapping="Wrap" Style="{StaticResource PhoneTextNormalStyle}"/>
+                                    <TextBlock Text="{Binding EntryName}" TextWrapping="Wrap" Style="{StaticResource PhoneTextNormalStyle}"/>
+                                    <TextBlock Text="{Binding EntryPrice}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextNormalStyle}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </phone:LongListSelector.ItemTemplate>
