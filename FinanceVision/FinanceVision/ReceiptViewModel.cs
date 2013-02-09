@@ -32,6 +32,39 @@ namespace FinanceVision
             }
         }
 
+        private ObservableCollection<ReceiptEntry> _thisWeekEntries;
+        public ObservableCollection<ReceiptEntry> ThisWeekEntries
+        {
+            get { return _thisWeekEntries; }
+            set
+            {
+                _thisWeekEntries = value;
+                NotifyPropertyChanged("ThisWeekEntries");
+            }
+        }
+
+        private ObservableCollection<ReceiptEntry> _thisMonthEntries;
+        public ObservableCollection<ReceiptEntry> ThisMonthEntries
+        {
+            get { return _thisMonthEntries; }
+            set
+            {
+                _thisMonthEntries = value;
+                NotifyPropertyChanged("ThisMonthEntries");
+            }
+        }
+
+        private ObservableCollection<ReceiptEntry> _todayEntries;
+        public ObservableCollection<ReceiptEntry> TodayEntries
+        {
+            get { return _todayEntries; }
+            set
+            {
+                _todayEntries = value;
+                NotifyPropertyChanged("TodayEntries");
+            }
+        }
+
         // All categories entries
         private ObservableCollection<ActivityCategory> _allCategories;
         public ObservableCollection<ActivityCategory> AllCategories
@@ -51,18 +84,62 @@ namespace FinanceVision
             receiptDatabase.SubmitChanges();
         }
 
+        //This is the default load function that loads all entries
         public void LoadEntriesFromDatabase()
         {
-            var entriesInDB = from ReceiptEntry entry in receiptDatabase.entries
-                              select entry;
 
-            AllReceiptEntries = new ObservableCollection<ReceiptEntry>(entriesInDB);
-
-            var categoriesInDB = from ActivityCategory category in receiptDatabase.categories
-                              select category;
-            AllCategories = new ObservableCollection<ActivityCategory>(categoriesInDB);
+            //AllReceiptEntries = DB_LoadAll();
+            ThisMonthEntries = DB_LoadByMonth(DateTime.Today.Month);
+            ThisWeekEntries = DB_LoadThisWeek();
+            TodayEntries = DB_LoadByDate(DateTime.Today);
+            //var categoriesInDB = from ActivityCategory category in receiptDatabase.categories
+            //                  select category;
+            //AllCategories = new ObservableCollection<ActivityCategory>(categoriesInDB);
             
         }
+
+        //Load all entries
+        public ObservableCollection<ReceiptEntry> DB_LoadAll()
+        {
+            var entriesInDB = from ReceiptEntry entry in receiptDatabase.entries
+                              orderby entry.EntryDate
+                              select entry;
+            return new ObservableCollection<ReceiptEntry>(entriesInDB);
+        }
+        
+        //Select a very specific date
+        public ObservableCollection<ReceiptEntry> DB_LoadByDate(DateTime date)
+        {
+            var entries = from ReceiptEntry entry in receiptDatabase.entries
+                          where DateTime.Compare(entry.EntryDate,date) == 0
+                          orderby entry.EntryDate
+                          select entry;
+            return new ObservableCollection<ReceiptEntry>(entries);
+        }
+
+        //Specify a month
+        public ObservableCollection<ReceiptEntry> DB_LoadByMonth(int Month)
+        {
+            var entries = from ReceiptEntry entry in receiptDatabase.entries
+                          where entry.EntryDate.Month == Month
+                          orderby entry.EntryDate
+                          select entry;
+            return new ObservableCollection<ReceiptEntry>(entries);
+        }
+
+        //Specify a week 
+        public ObservableCollection<ReceiptEntry> DB_LoadThisWeek()
+        {
+
+
+            var entries = from ReceiptEntry entry in receiptDatabase.entries
+                          where DateTime.Compare(entry.EntryDate, Helper.StartOfWeek) > 0 &&
+                                DateTime.Compare(entry.EntryDate, Helper.EndOfWeek) < 0
+                          orderby entry.EntryDate
+                          select entry;
+            return new ObservableCollection<ReceiptEntry>(entries);
+        }
+
 
         // Add a new entry to the database and collections.
         public void AddEntry(ReceiptEntry newEntry)
@@ -75,8 +152,15 @@ namespace FinanceVision
 
             // Add a new entry to the "all" observable collection.
             AllReceiptEntries.Add(newEntry);
-            
 
+            if (newEntry.EntryDate.Month == DateTime.Today.Month)
+                ThisMonthEntries.Add(newEntry);
+
+            if (Helper.IsThisWeek(newEntry.EntryDate))
+                ThisWeekEntries.Add(newEntry);
+
+            if (DateTime.Compare(newEntry.EntryDate, DateTime.Today) == 0)
+                TodayEntries.Add(newEntry);
         }
         
         #region INotifyPropertyChanged Members
@@ -92,5 +176,6 @@ namespace FinanceVision
             }
         }
         #endregion
+
     }
 }

@@ -62,7 +62,7 @@
                             </Grid.RowDefinitions>
                             <toolkit:HubTile Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                                          Margin="12,12,0,0"
-                                         Source="/Images/Personal_Icon_202.png"
+                                         Source="/Images/Personal_Icon_202_white.png"
                                          Title="Personal"
                                          Name ="Personal"
                                          Notification="Personal&#x0d;&#x0a;Summary"
@@ -73,7 +73,7 @@
                                          Hold="HubTile_Hold"/>
                             <toolkit:HubTile Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2"
                                          Margin="12,12,0,0"
-                                         Source="/Images/Food_Icon_202.png"
+                                         Source="/Images/Food_Icon_202_white.png"
                                          Name ="Food"
                                          Title="Food"
                                          Notification="Food&#x0d;&#x0a;Summary"
@@ -83,7 +83,7 @@
                                          Hold="HubTile_Hold"/>
                             <toolkit:HubTile Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
                                          Margin="12,12,0,0"
-                                         Source="/Images/Fun_Icon_202.png"
+                                         Source="/Images/Fun_Icon_202_white.png"
                                          Title="Fun"
                                          Name="Fun"
                                          Notification="Fun&#x0d;&#x0a;Summary"
@@ -94,7 +94,7 @@
                                          Hold="HubTile_Hold"/>
                             <toolkit:HubTile Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"
                                          Margin="12,12,0,0"
-                                         Source="/Images/Transportation_Icon_202.png"
+                                         Source="/Images/Transportation_Icon_202_white.png"
                                          Title="Transportation"
                                          Name="Transportation"
                                          Notification="Transportation&#x0d;&#x0a;Summary"
@@ -104,7 +104,7 @@
                                          Hold="HubTile_Hold"/>
                             <toolkit:HubTile Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
                                          Margin="12,12,0,0"
-                                         Source="/Images/Bills_Icon_202.png"
+                                         Source="/Images/Bills_Icon_202_white.png"
                                          Title="Bills"
                                          Name="Bills"
                                          Notification="Transportation&#x0d;&#x0a;Summary"
@@ -114,14 +114,11 @@
                                          Hold="HubTile_Hold"/>
                         </Grid>
                     </ScrollViewer>
-
                 </phone:PivotItem>
-
-
                 <!--Pivot item twp-->
                 <phone:PivotItem Header="Today">
                     <!--Double line list with text wrapping-->
-                    <phone:LongListSelector Margin="0,0,0,0" ItemsSource="{Binding AllReceiptEntries}">
+                    <phone:LongListSelector Margin="0,0,0,0" ItemsSource="{Binding TodayEntries}">
                         <phone:LongListSelector.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Margin="0,0,0,0" Orientation ="Horizontal">
@@ -155,7 +152,7 @@
                                 </StackPanel>
                             </Button>
                         </StackPanel>
-                        <phone:LongListSelector  Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,-12,0" ItemsSource="{Binding AllReceiptEntries}">
+                        <phone:LongListSelector  Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,-12,0" ItemsSource="{Binding ThisWeekEntries}">
                             <phone:LongListSelector.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Margin="0,0,0,17" >
@@ -198,7 +195,7 @@
                             </Button>
                         </StackPanel>
                         <!--Double line list with text wrapping-->
-                        <phone:LongListSelector Grid.Row="1" Margin="0,0,-12,0" ItemsSource="{Binding AllReceiptEntries}">
+                        <phone:LongListSelector Grid.Row="1" Margin="0,0,-12,0" ItemsSource="{Binding ThisMonthEntries}">
                             <phone:LongListSelector.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Margin="0,0,0,17" >

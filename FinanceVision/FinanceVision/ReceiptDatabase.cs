@@ -40,10 +40,10 @@ namespace FinanceVision
             }
         }
 
-        private string _entryDate;
+        private DateTime _entryDate;
 
         [Column]
-        public string EntryDate
+        public DateTime EntryDate
         {
             get { return _entryDate;  }
             set { _entryDate = value;  }
