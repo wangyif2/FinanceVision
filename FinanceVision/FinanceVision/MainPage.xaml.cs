@@ -14,11 +14,14 @@ using System.Windows.Media.Imaging;
 using Windows.Phone.Speech.Recognition;
 using Windows.Phone.Speech.Synthesis;
 using GestureEventArgs = System.Windows.Input.GestureEventArgs;
+using System.IO.IsolatedStorage;
 
 namespace FinanceVision
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        /// Provides easy key-value pair storage for app settings
+        private IsolatedStorageSettings AppSettings = IsolatedStorageSettings.ApplicationSettings;
         public static ReceiptViewModel viewModel;
         SpeechRecognizerUI recoWithUI;
         SpeechSynthesizer speechSynthesizer = new SpeechSynthesizer();
@@ -30,6 +33,35 @@ namespace FinanceVision
             // Sample code to localize the ApplicationBar
             BuildLocalizedApplicationBar();
             LoadDatabase();
+            LoadGoals();
+        }
+
+        private void LoadGoals()
+        {
+            string mGoal = string.Empty;
+            string wGoal = string.Empty;
+            try
+            {
+                mGoal = (string)AppSettings["MonthGoal"];
+                wGoal = (string)AppSettings["WeekGoal"];
+            }
+            catch (KeyNotFoundException e)
+            {
+                AppSettings.Add("MonthGoal", mGoal);
+                AppSettings.Add("WeekGoal", wGoal);
+            }
+            if (!String.IsNullOrEmpty(mGoal))
+            {
+                EditMonthGoal_TextBlock.Text = "my goal is to stay under $" + mGoal;
+                EditMonthGoal.Visibility = System.Windows.Visibility.Visible;
+                AddMonthGoal.Visibility = System.Windows.Visibility.Collapsed;
+            }
+            if (!String.IsNullOrEmpty(wGoal))
+            {
+                EditWeekGoal_TextBlock.Text = "my goal is to stay under $" + wGoal;
+                EditWeekGoal.Visibility = System.Windows.Visibility.Visible;
+                AddWeekGoal.Visibility = System.Windows.Visibility.Collapsed;
+            }
         }
 
         // Code for building a localized ApplicationBar
@@ -62,13 +94,29 @@ namespace FinanceVision
         private void AddGoal_Tapped(object sender, EventArgs e)
         {
             PhoneTextBox phonetb = (PhoneTextBox)sender;
-            if (!String.IsNullOrEmpty(phonetb.Text))
+            Button bt = (Button)FindName(phonetb.Name.Replace("Add", "Edit"));
+            string amount = phonetb.Text;
+            if (!String.IsNullOrEmpty(amount))
             {
+                // update
+                if (phonetb.Name.Contains("Month"))
+                    AppSettings["MonthGoal"] = amount;
+                else
+                    AppSettings["WeekGoal"] = amount;
+            }
+            else
+            {
+                if (phonetb.Name.Contains("Month"))
+                    amount = (string)AppSettings["MonthGoal"];
+                else
+                    amount = (string)AppSettings["WeekGoal"];
+            }
+
+            if (!String.IsNullOrEmpty(amount))
+            {
+                ((TextBlock)bt.FindName(bt.Name + "_TextBlock")).Text = "my goal is to stay under $" + amount;
                 phonetb.Visibility = System.Windows.Visibility.Collapsed;
-                Button bt = (Button)FindName(phonetb.Name.Replace("Add", "Edit"));
-                ((TextBlock)bt.FindName(bt.Name + "_TextBox")).Text = "my goal is to stay under $" + phonetb.Text;
                 bt.Visibility = System.Windows.Visibility.Visible;
-                //MessageBox.Show("Your goal was to spend under " + phonetb.Text, MessageBoxButton.OK);
             }
         }
 
@@ -78,6 +126,7 @@ namespace FinanceVision
             bt.Visibility = System.Windows.Visibility.Collapsed;
             PhoneTextBox ptb = (PhoneTextBox)FindName(bt.Name.Replace("Edit", "Add"));
             ptb.Visibility = System.Windows.Visibility.Visible;
+            ptb.Focus();
         }
 
         private void HubTile_Tap(object sender, System.Windows.Input.GestureEventArgs e)

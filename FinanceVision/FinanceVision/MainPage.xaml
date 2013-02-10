@@ -147,7 +147,7 @@
                                                   InputScope="Number"/>
                             <Button x:Name="EditWeekGoal" Visibility="Collapsed" BorderThickness="0" Click="EditGoal_Click">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock x:Name="EditWeekGoal_TextBox" Text="My goal is to stay under " VerticalAlignment="Center"/>
+                                    <TextBlock x:Name="EditWeekGoal_TextBlock" VerticalAlignment="Center"/>
                                     <Image Source="Images/edit_dark.png" Margin="30,0" Height="40" Width="40" />
                                 </StackPanel>
                             </Button>
@@ -189,7 +189,7 @@
                                                   InputScope="Number"/>
                             <Button x:Name="EditMonthGoal" Visibility="Collapsed" BorderThickness="0" Click="EditGoal_Click">
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock x:Name="EditMonthGoal_TextBox" Text="My goal is to stay under " VerticalAlignment="Center"/>
+                                    <TextBlock x:Name="EditMonthGoal_TextBlock" VerticalAlignment="Center"/>
                                     <Image Source="Images/edit_dark.png" Margin="30,0" Height="40" Width="40" />
                                 </StackPanel>
                             </Button>
